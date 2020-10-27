@@ -1,0 +1,13 @@
+﻿@model IEnumerable<WebVL.Models.Category>
+
+<h2 class="fw-title">Thương Hiệu</h2>
+<ul class="category-menu">
+    <li><a href=@Url.Action("")>Xem tất cả</a></li>
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="@Url.Action("Laptop",new { id = item.categoryId })">@item.CategoryName</a>
+        </li>
+    }
+</ul>
+

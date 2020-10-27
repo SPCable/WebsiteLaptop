@@ -1,0 +1,173 @@
+﻿@model IEnumerable<WebVL.Models.Product> 
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    WebVL.Context.ProductContext productContext = new WebVL.Context.ProductContext();
+}
+
+
+<body>
+    <!-- Page Preloder -->
+    <!-- <div id="preloder">
+        <div class="loader"></div>
+    </div> -->
+
+     <div class="page-top-info">
+        <div class="container">
+            <h4>Sản phẩm</h4>
+            <div class="site-pagination">
+                <a href="">Trang chủ</a> /
+                <a href="">Mua sắm</a>
+
+            </div>
+            
+        </div>
+    </div> 
+    <!-- Page info end -->
+
+
+    <!-- product section -->
+    <section class="product-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="product-pic-zoom">
+                        <img class="product-big-img" src="~/img/product/@Model.Single().productImg" alt="">
+                    </div>
+                    <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
+                        <div class="product-thumbs-track">
+                            <div class="pt active" data-imgbigurl=""><img src="~/img/product/@Model.Single().productImg" alt=""></div>
+                            <div class="pt" data-imgbigurl="img/single-product/2.jpg"><img src="~/img/product/@Model.Single().productImg1" alt=""></div>
+                            <div class="pt" data-imgbigurl="img/single-product/3.jpg"><img src="~/img/product/@Model.Single().productImg2" alt=""></div>
+                            <div class="pt" data-imgbigurl="img/single-product/4.jpg"><img src="~/img/product/@Model.Single().productImg3" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 product-details">
+                    <h2 class="p-title">@Model.SingleOrDefault().productName</h2>
+                    <h3 class="p-price">@Model.Single().productPrice</h3>
+                    @if (Model.Single().productAmount == 0)
+                    {
+                        <h4 class="p-stock">Tình trạng: <span>Hết hàng</span></h4>
+                    }
+                    else
+                    {
+                        <h4 class="p-stock">Tình trạng: <span>Còn hàng</span></h4>
+                    }
+
+                <div class="p-rating">
+                    @for(int i = 1; i<=Model.Single().productEvaluate;i++)
+                    {
+                        <i class="fa fa-star-o"></i>
+                    }
+                    <i class="fa fa-star-o fa-fade"></i>
+                </div>
+                    <div class="p-review">
+                        <a href="">3 nhận xét</a>|<a href="">Thêm nhận xét</a>
+                    </div>
+
+                    <div class="quantity">
+                        <p>Số lượng</p>
+                        <div class="pro-qty"><input type="text" value="1"></div>
+                    </div>
+                    <a href="@Url.Action("AddShoppingCart", "Shopping", new { @Idpro = Model.Single().ProductId, Url = Request.Url.ToString()})" class="site-btn">MUA NGAY</a>
+                    <div id="accordion" class="accordion-area">
+                        <div class="panel">
+                            <div class="panel-header" id="headingOne">
+                                <button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">Thông số chi tiết</button>
+                            </div>
+                            <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="panel-body">
+                                    <p>@Model.Single().productDesc</p>
+                                    <p>CPU:Intel Core i5-9300H 2,4GHz up to 4,1GHz 8MB.</p>
+                                    <p>Ram: 8GB DDR4 2666MHz</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-header" id="headingTwo">
+                                <button class="panel-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">PHương thức thanh toán </button>
+                            </div>
+                            <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="panel-body">
+                                    <p><b>Thanh toán trực tiếp (COD)</b></p>
+                                </div>
+                                <div class="panel-body">
+                                    <p><b>Thanh toán Momo</b></p>
+                                </div>
+                                <div class="panel-body">
+                                    <p><b>Thanh toán Paypal</b></p>
+                                </div>
+                                <div class="panel-body">
+                                    <p><b>Thanh toán VnPay</b></p>
+                                </div>
+                                <div class="panel-body">
+                                    <p><b>Thanh toán Ngân hàng</b></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-header" id="headingThree">
+                                <button class="panel-link" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">Giao hàng và đổi trả</button>
+                            </div>
+                            <div id="collapse3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                <div class="panel-body">
+                                    <h4>Chính sách 7 ngày đổi trả</h4>
+                                    <p>Giao hàng tận nhà<span> <h4>3-4 ngày</h4></span></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-sharing">
+                        <a href=""><i class="fa fa-google-plus"></i></a>
+                        <a href=""><i class="fa fa-pinterest"></i></a>
+                        <a href=""><i class="fa fa-facebook"></i></a>
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a href=""><i class="fa fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product section end -->
+    <!-- RELATED PRODUCTS section -->
+    <section class="related-product-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sản phẩm liên quan </h2>
+            </div>
+            <div class="product-slider owl-carousel">
+                @foreach (var item in productContext.Products)
+                {
+                    if (item.CategoryId == Model.Single().CategoryId.ToString())
+                    {
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="~/img/product/@item.productImg" alt="">
+                                <div class="pi-links">
+                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                </div>
+                            </div>
+                            <div class="pi-text">
+                                <h6>@item.productPrice</h6>
+                                <p>@item.productName </p>
+                            </div>
+                        </div>
+                    }
+
+                }
+            </div>
+        </div>
+    </section>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/jquery.zoom.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>

@@ -1,0 +1,164 @@
+﻿@using WebVL.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebVL.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    WebVL.Context.ProductContext db = new WebVL.Context.ProductContext();
+}
+
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+                
+            
+            <div>
+                <h3>Sản Phẩm</h3>
+                <h5 class="text-success">@TempData["msg"]</h5>
+                <h5 class="text-warning">@TempData["AddProduct"]</h5>
+                <h5 class="text-danger">@TempData["DeleteProduct"]</h5>
+            </div>
+                    
+        </div>
+                
+    </div>
+</div>            
+<div class="main-card mb-3 card">
+            
+    <div class="card-body">
+
+        <h5 class="card-title">Danh Sách Sản Phẩm</h5>
+
+
+        <form class="needs-validation" novalidate>
+            <div class="form-row">
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            Tên Sản Phẩm
+                        </th>
+                        <th>
+                            Giá
+                        </th>
+                        <th>
+                            Giảm Giá
+                        </th>
+                        <th>
+                            Lượt Xem
+                        </th>
+                        <th>
+                            Mô Tả
+                        </th>
+                        <th>
+                            Ảnh
+                        </th>
+                        <th>
+                            Thương Hiệu
+                        </th>
+                        <th>
+                            Số Lượng
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.productName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.productPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.productDiscout)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.productView)
+                            </td>
+                                    
+                            <td style="max-width: 200px">
+                                    
+                                @if(item.productDesc.Length == null)
+                                {
+                                    item.productDesc = " ";
+                                }
+                                @if (item.productDesc.Length > 100)
+                                {
+                                    @Html.Raw(item.productDesc.Substring(0, 100) + " ...");
+                                }
+                                else
+                                {
+                                    @Html.Raw(item.productDesc)
+                                }
+                            </td>
+                            <td>
+                                <img width="80" height="50" src="~/img/product/@item.productImg" />
+                                        
+                            </td>
+                            <td>
+                                @{ 
+                                    var a = db.Categories.Where(n => n.categoryId == item.CategoryId).Single().CategoryName;
+                                }
+                                @Html.DisplayFor(modelItem => a)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.productAmount)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditSP", new { id = item.ProductId })
+                                -
+                                        
+                                @Html.ActionLink("Delete", "DeleteSP", new { id = item.ProductId }, new { onclick = "return confirm('Chắc xóa không!?');" })
+
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <div class="page-number" style="position:relative; left:1030px">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page}))
+                </div>
+                <style>
+                    .page-number li{
+                        display: inline;
+                    }
+                </style>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Ẩn danh sách
+                    </label>
+
+                </div>
+            </div>
+
+            <a href="https://localhost:44344/AdHome/CreateSP" class="btn btn-primary" type="submit"> Thêm </a>
+
+        </form>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<WebVL.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdHome/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Count)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DayBooks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Count)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DayBooks)
+        </td>
+        <td>
+            @if(item.Status == 1)
+            {
+            <p>Đang giao hàng</p>
+            }
+
+            @if(item.Status == 2)
+            {
+            <p>Chưa giao hàng</p>
+            }
+            @if(item.Status == 3)
+            {
+            <p>Đã giao hàng</p>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdBill }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdBill }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdBill })
+        </td>
+    </tr>
+}
+
+</table>

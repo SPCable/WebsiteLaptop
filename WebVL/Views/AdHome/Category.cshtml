@@ -1,0 +1,114 @@
+﻿@model IEnumerable<WebVL.Models.Category>
+
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+
+            <div>
+                <h3>Danh Mục</h3>
+                <h5 class="text-success">@TempData["msgCate"]</h5>
+                <h5 class="text-warning">@TempData["AddCate"]</h5>
+                <h5 class="text-danger">@TempData["DeleteCate"]</h5>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="main-card mb-3 card">
+
+    <div class="card-body">
+
+        <h5 class="card-title">Danh Sách Danh Mục</h5>
+
+
+        <form class="needs-validation" novalidate>
+            <div class="form-row">
+
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            Tên Danh Mục
+                        </th>
+                        <th>
+                            Ảnh Danh Mục
+                        </th>
+                        <th>
+                            Mã Thương Hiệu
+                        </th>
+                        <th>
+                            Tên Thương Hiệu
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryImg)
+                                <img width="80" height="50" src="~/img/@item.CategoryImg" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BrandId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BrandName)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditCate", new { id = item.categoryId }) -
+                                @*@Html.ActionLink("Details", "Details", new { id = item.categoryId }) |*@
+                                @Html.ActionLink("Delete", "DeleteCate", new { id = item.categoryId }, new { onclick = "return confirm('Chắc xóa không!?');" })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Ẩn danh sách
+                    </label>
+
+                </div>
+            </div>
+
+            <a href="https://localhost:44344/AdHome/CreateCate" class="btn btn-primary" type="submit"> Thêm </a>
+
+        </form>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+    </div>
+</div>

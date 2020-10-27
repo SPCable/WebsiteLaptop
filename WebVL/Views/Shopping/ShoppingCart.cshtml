@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebVL.Models.ShoppingCart>
+
+@{
+    ViewBag.Title = "ShoppingCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-top-info">
+    <div class="container">
+        <h4>Giỏ hàng</h4>
+        <div class="site-pagination">
+            <a href= @Url.Action("Index","Home")>Home</a> /
+            <a href="">Giỏ hàng</a>
+        </div>
+    </div>
+</div>
+<section class="cart-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-table">
+                    <h3>Giỏ hàng</h3>
+                    <div class="cart-table-warp">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="product-th"><b style="font-size:16px;">Sản phẩm</b> </th>
+                                    <th class="quy-th"><b style="font-size:16px;">Số lượng</b></th>
+                                    <th class="total-th"><b style="font-size:16px;">Giá</b></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="product-col">
+                                            <img src="~/img/product/@Html.DisplayFor(modelItem => item.Img)" alt="">
+                                            <div class="pc-title">
+                                                <h4> @Html.DisplayFor(modelItem => item.Name)</h4>
+                                                <p> @Html.DisplayFor(modelItem => item.Price) đ</p>
+                                                @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                                            </div>
+                                        </td>
+                                        <td class="quy-col">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    <input type="text" value=@Html.DisplayFor(modelItem => item.Number)>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="size-col"><h4>@Html.DisplayFor(modelItem => item.Total) đ</h4></td>
+                                        <td><a href="">Cập nhật</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <div class="total-cost">
+                        <h6>Tổng tiền <span>@ViewBag.Total đ</span></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 card-right">
+                <form class="promo-code-form">
+                    <input type="text" placeholder="Mã giảm giá">
+                    <button>Nhập</button>
+                </form>
+                <a href="@Url.Action("Checkout","Shopping")" class="site-btn">Thanh toán</a>
+                <a href="@Url.Action("Index","Home")" class="site-btn sb-dark">Tiếp tục mua sắm</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- cart section end -->
+<!-- Related product section -->
+<section class="related-product-section">

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebVL.Models.Statt>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/AdHome/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Daypost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postby)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.View)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Details)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Daypost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postby)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.View)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Idpost }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Idpost }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Idpost })
+        </td>
+    </tr>
+}
+
+</table>

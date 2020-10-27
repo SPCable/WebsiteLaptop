@@ -1,0 +1,175 @@
+﻿@model WebVL.Models.Product
+
+
+@{
+    WebVL.Context.ProductContext db = new WebVL.Context.ProductContext();
+    var a = db.Categories;
+    ViewBag.Title = "EditSP";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@using (Html.BeginForm("EditSP", "AdHome", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+
+                <h3>Sản Phẩm</h3>
+            </div>
+
+        </div>
+    </div>
+    <div class="main-card mb-3 card">
+
+        <div class="card-body">
+
+
+            <h5 class="card-title">Sửa Thông Tin Sản Phẩm</h5>
+
+            <form class="needs-validation" novalidate>
+
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Product</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.ProductId)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.productName, "Tên sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4 mb-3">
+                            @Html.EditorFor(model => model.productName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.productName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.productPrice, "Giá", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4 mb-3">
+                            @Html.EditorFor(model => model.productPrice, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.productPrice, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.productDiscout, "Giảm giá", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4 mb-3">
+                            @Html.EditorFor(model => model.productDiscout, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.productDiscout, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.productAmount, "Số lượng", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4 mb-3">
+                            @Html.EditorFor(model => model.productAmount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.productAmount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.productDesc, "Mô tả", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+
+                            <textarea name="productDesc">@Model.productDesc</textarea>
+                                    
+                            @Html.ValidationMessageFor(model => model.productDesc, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.productImg, "Ảnh 0", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4 mb-3">
+                            <input type="file" accept="image/*" name="fileUpload0" />
+                        </div>
+
+
+
+                        <div class="col-md-4 mb-3">
+                            <img src="@Url.Content("~/img/product/"+Model.productImg)" width="100px" height="90px" /> @TempData["imgValiable0"] <a style="color:red">@ViewBag.Thongbao0</a>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            ________________________________
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.productImg1, "Ảnh 1", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" accept="image/*" name="fileUpload1" />
+                            <a style="color:red">@ViewBag.Thongbao</a>
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <img src="@Url.Content("~/img/product/"+Model.productImg1)" width="100px" height="90px" /> @TempData["imgValiable1"] @TempData["imgNotValiable1"]
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            ________________________________
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.productImg2, "Ảnh 2", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" accept="image/*" name="fileUpload2" />
+                            <a style="color:red">@ViewBag.Thongbao</a>
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <img src="@Url.Content("~/img/product/"+Model.productImg2)" width="100px" height="90px" /> @TempData["imgValiable2"] @TempData["imgNotValiable2"]
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            ________________________________
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.productImg3, "Ảnh 3", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" accept="image/*" name="fileUpload3" />
+                            <a style="color:red">@ViewBag.Thongbao</a>
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <img src="@Url.Content("~/img/product/"+Model.productImg3)" width="100px" height="90px" /> @TempData["imgValiable3"] @TempData["imgNotValiable3"]
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CategoryId, "Thương hiệu", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-4 mb-3">
+                            @Html.DropDownListFor(model => model.CategoryId, new SelectList(a.ToList(), "categoryId", "CategoryName"), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck">
+                            <label class="form-check-label" for="invalidCheck">
+                                Ẩn danh sách
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-10 col-md-2">
+                            <input type="submit" value="Lưu" class="btn btn-primary" />
+                            <a class="btn btn-danger pull-right" style="color:white" href="https://localhost:44344/AdHome/Index">Hủy</a>
+                        </div>
+                        <div class="col-md-offset-5 col-md-2">
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+}
