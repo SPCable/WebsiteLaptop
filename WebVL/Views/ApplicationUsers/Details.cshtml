@@ -1,0 +1,188 @@
+﻿@model WebVL.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div>
+                <h3>Quản Lý Tài Khoản Khách Hàng</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="card-title">Danh Sách Chi Tiết Tài Khoản Khách Hàng</h5>
+                <div class="main-card mb-3 card">
+
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Name)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Address)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Address)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Postcode)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Postcode)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Email)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EmailConfirmed)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EmailConfirmed)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.PasswordHash)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.PasswordHash)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.SecurityStamp)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.SecurityStamp)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.PhoneNumber)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.PhoneNumber)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.PhoneNumberConfirmed)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.TwoFactorEnabled)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.LockoutEndDateUtc)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.LockoutEnabled)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.LockoutEnabled)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.AccessFailedCount)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.AccessFailedCount)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.UserName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.UserName)
+                            </dd>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-10 col-md-2">
+                <input type="button" class="btn btn-primary" value="Edit" onclick="location.href='@Url.Action("Edit", "ApplicationUsers", new { id = Model.Id })'" />
+                <a class="btn btn-danger pull-right" style="color:white" href="https://localhost:44344/ApplicationUsers/Index">Back</a>
+            </div>
+            <div class="col-md-offset-5 col-md-2">
+
+            </div>
+        </div>
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+    </div>
+</div>
