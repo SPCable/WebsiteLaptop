@@ -1,0 +1,115 @@
+﻿@model IEnumerable<WebVL.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+
+
+            <div>
+                <h3>Quản Lý Tài Khoản Khách Hàng</h3>
+                <h5 class="text-success">@TempData["EditUser"]</h5>
+                <h5 class="text-danger">@TempData["DeleteUser"]</h5>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="main-card mb-3 card">
+
+    <div class="card-body">
+
+        <h5 class="card-title">Danh Sách Tài Khoản Khách Hàng</h5>
+
+
+        <form class="needs-validation" novalidate>
+            <div class="form-row">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Họ Và Tên
+                        </th>
+                        <th>
+                            Địa Chỉ
+                        </th>
+                        <th>
+                            Mã Khu Vực
+                        </th>
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Số Điện Thoại
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Postcode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) -
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) -
+                                @Html.ActionLink("Delete", "DeleteConfirmed", new { id = item.Id }, new { onclick = "return confirm('Chắc xóa không!?');" })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <div class="page-number" style="position:relative; left:1030px">
+                    @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))*@
+                </div>
+                <style>
+                    .page-number li {
+                        display: inline;
+                    }
+                </style>
+            </div>
+
+        </form>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+    </div>
+</div>
