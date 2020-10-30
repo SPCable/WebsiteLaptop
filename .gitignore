@@ -1,2 +1,14 @@
 
 .vs/WebVL/v16/Server/sqlite3/db.lock
+.vs/WebVL/config/applicationhost.config
+.vs/WebVL/v16/.suo
+WebVL/bin/WebVL.dll
+WebVL/bin/WebVL.pdb
+WebVL/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+WebVL/obj/Debug/WebVL.csproj.CoreCompileInputs.cache
+WebVL/obj/Debug/WebVL.csproj.FileListAbsolute.txt
+WebVL/obj/Debug/WebVL.csprojAssemblyReference.cache
+WebVL/obj/Debug/WebVL.dll
+WebVL/obj/Debug/WebVL.pdb
+WebVL/WebVL.csproj
+WebVL/WebVL.csproj.user
