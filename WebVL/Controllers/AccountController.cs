@@ -83,7 +83,6 @@ namespace WebVL.Controllers
                 case SignInStatus.Success:
                     {
                         Session["Taikhoan"] = User;
-                        ViewBag.Thongbao = "KAKa";
                         return RedirectToLocal(returnUrl);
                     }
                     

@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    User user = (WebVL.Models.ApplicationUser)Session["Taikhoan"];
 }
 
 <h2>Checkout</h2>
@@ -32,22 +33,19 @@
                     </div>
                     <div class="row address-inputs">
                         <div class="col-md-12">
-                            <input type="text" placeholder="Họ và tên">
+                            <input type="text" placeholder="Họ và tên" value="@user.Name" />
                         </div>
                         <div class="col-md-12">
-                            <input type="text" placeholder="Địa chỉ">
+                            <input type="text" placeholder="Địa chỉ" value="@user.Address" >
                         </div>
                         <div class="col-md-12">
-                            <input type="text" placeholder="Email">
-                        </div>
-                        <div class="col-md-12">
-                            <input type="text" placeholder="Số điện thoại">
+                            <input type="text" placeholder="Email" value="@user.Email" >
                         </div>
                         <div class="col-md-6">
-                            <input type="text" placeholder="Zipcode">
+                            <input type="text" placeholder="Zipcode" value="@user.Postcode" >
                         </div>
                         <div class="col-md-6">
-                            <input type="text" placeholder="Phone no.">
+                            <input type="text" placeholder="Phone no." value="@user.PhoneNumber" >
                         </div>
                     </div>
                     <div class="cf-title">Phương thức giao hàng</div>

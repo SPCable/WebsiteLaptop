@@ -94,6 +94,9 @@ namespace WebVL.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+             ApplicationUser user =  (ApplicationUser)Session["Taikhoan"];
+             
+
             List<ShoppingCart> shoppingCarts = ShoppingCarts();
             ViewBag.Total = Total();
             ViewBag.Amout = Amout();
@@ -102,6 +105,7 @@ namespace WebVL.Controllers
 
         public ActionResult Payment()
         {
+
             if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
             {
                 return RedirectToAction("Login", "Account");
