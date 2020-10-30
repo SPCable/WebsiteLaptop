@@ -85,8 +85,37 @@ namespace WebVL.Controllers
         }
         public ActionResult Checkout()
         {
+            if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            if (Session["ShoppingCart"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             List<ShoppingCart> shoppingCarts = ShoppingCarts();
+            ViewBag.Total = Total();
+            ViewBag.Amout = Amout();
             return View(shoppingCarts);
         }
+
+        public ActionResult Payment()
+        {
+            if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Account");
+            }    
+            if(Session["ShoppingCart"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            List<ShoppingCart> shoppingCarts = ShoppingCarts();
+            ViewBag.Total = Total();
+            ViewBag.Amout = Amout();
+            return View(shoppingCarts);
+        }
+
     }
 }
