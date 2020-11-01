@@ -2,56 +2,101 @@
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Views/AdHome/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Statt</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Details)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Details)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Daypost)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Daypost)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Postby)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Postby)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.View)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.View)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div>
+                <h3>Bài Viết</h3>
+            </div>
         </div>
-    }
+    </div>
+</div>
+<div class="main-card mb-3 card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="card-title">Chi Tiết Bài Viết</h5>
+                <h3 style="color:red">Chắc xóa bài viết này không?</h3>
+                <div class="main-card mb-3 card">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Details)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Details)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Daypost)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Daypost)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Postby)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Postby)
+                            </dd>
+                        </li>
+                        <li class="list-group-item">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.View)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.View)
+                            </dd>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <div class="col-md-offset-10 col-md-2">
+                    <input type="submit" value="Delete" class="btn btn-primary" />
+                    <a class="btn btn-danger pull-right" style="color:white" href="https://localhost:44344/Statt/Index">Back</a>
+                </div>
+                <div class="col-md-offset-5 col-md-2">
+
+                </div>
+            </div>
+        }
+        <script>
+                // Example starter JavaScript for disabling form submissions if there are invalid fields
+                (function () {
+                    'use strict';
+                    window.addEventListener('load', function () {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(forms, function (form) {
+                            form.addEventListener('submit', function (event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add('was-validated');
+                            }, false);
+                        });
+                    }, false);
+                })();
+        </script>
+    </div>
 </div>

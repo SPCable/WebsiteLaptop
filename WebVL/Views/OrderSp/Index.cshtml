@@ -2,87 +2,142 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/AdHome/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdCus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cargo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Count)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NameCus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DayBooks)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdCus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cargo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Count)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameCus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DayBooks)
-        </td>
-        <td>
-            @if(item.Status == 1)
-            {
-            <p>Đang giao hàng</p>
-            }
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
 
-            @if(item.Status == 2)
-            {
-            <p>Chưa giao hàng</p>
-            }
-            @if(item.Status == 3)
-            {
-            <p>Đã giao hàng</p>
-            }
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdBill }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdBill }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdBill })
-        </td>
-    </tr>
-}
 
-</table>
+            <div>
+                <h3>Đơn Hàng</h3>
+                <h5 class="text-success">@TempData["EditOrder"]</h5>
+                <h5 class="text-danger">@TempData["DeleteOrder"]</h5>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="main-card mb-3 card">
+
+    <div class="card-body">
+
+        <h5 class="card-title">Danh Sách Đơn Hàng</h5>
+
+
+        <form class="needs-validation" novalidate>
+            <div class="form-row">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Mã Khách Hàng
+                        </th>
+                        <th>
+                            Món Hàng
+                        </th>
+                        <th>
+                            Giá
+                        </th>
+                        <th>
+                            Số Lượng
+                        </th>
+                        <th>
+                            Địa Chỉ
+                        </th>
+                        <th>
+                            Họ Tên Khách Hàng
+                        </th>
+                        <th>
+                            Ngày Đặt
+                        </th>
+                        <th>
+                            Tình Trạng Đặt Hàng
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdCus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cargo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Count)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.NameCus)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DayBooks)
+                            </td>
+                            
+                                @if (item.Status == 1)
+                                {
+                                    <th class="text-warning">Đang giao hàng</th>
+                                }
+
+                                @if (item.Status == 2)
+                                {
+                                    <th style="color:red">Chưa giao hàng</th>
+                                }
+                                @if (item.Status == 3)
+                                {
+                                    <th class="text-success">Đã giao hàng</th>
+                                }
+                            
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.IdBill }) -
+                                @*@Html.ActionLink("Details", "Details", new { id = item.IdBill }) -*@
+                                @Html.ActionLink("Delete", "Delete", new { id = item.IdBill })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <div class="page-number" style="position:relative; left:1030px">
+                    @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))*@
+                </div>
+                <style>
+                    .page-number li {
+                        display: inline;
+                    }
+                </style>
+            </div>
+        </form>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+    </div>
+</div>
