@@ -2,51 +2,101 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div>
+                <h3>Bài Viết</h3>
+                <h5 class="text-success">@TempData["EditOrder"]</h5>
+                <h5 class="text-danger">@TempData["DeleteOrder"]</h5>
+            </div>
+        </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Details)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Daypost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Postby)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.View)
-        </th>
-        <th></th>
-    </tr>
+    </div>
+</div>
+<div class="main-card mb-3 card">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Details)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Daypost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Postby)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.View)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Idpost }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Idpost }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Idpost })
-        </td>
-    </tr>
-}
+    <div class="card-body">
 
-</table>
+        <h5 class="card-title">Danh Sách Bài Viết</h5>
+
+
+        <form class="needs-validation" novalidate>
+            <div class="form-row">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Chi Tiết Bài Viết
+                        </th>
+                        <th>
+                            Ngày Đăng
+                        </th>
+                        <th>
+                            Đăng Bởi
+                        </th>
+                        <th>
+                            Lượt Xem
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Details)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Daypost)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Postby)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.View)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Idpost }) -
+                                @*@Html.ActionLink("Details", "Details", new { id = item.Idpost }) -*@
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Idpost })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <div class="page-number" style="position:relative; left:1030px">
+                    @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))*@
+                </div>
+                <style>
+                    .page-number li {
+                        display: inline;
+                    }
+                </style>
+            </div>
+        </form>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+    </div>
+</div>

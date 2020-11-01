@@ -2,63 +2,78 @@
 
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h2>Edit</h2>
 
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Statt</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Idpost)
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                <h3>Bài Viết</h3>
             </div>
+
         </div>
+    </div>
+    <div class="main-card mb-3 card">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Daypost, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Daypost, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Daypost, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <div class="card-body">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Postby, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Postby, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Postby, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.View, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.View, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.View, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <h5 class="card-title">Sửa Thông Tin Bài Viết</h5>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+            <form class="needs-validation" novalidate>
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Idpost)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Details,"Chi Tiết Bài Viết", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-7 mb-3">
+                            @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Daypost,"Ngày Đăng", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-7 mb-3">
+                            @Html.EditorFor(model => model.Daypost, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Daypost, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Postby,"Đăng Bởi", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-7 mb-3">
+                            @Html.EditorFor(model => model.Postby, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Postby, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.View,"Lượt Xem", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-7 mb-3">
+                            @Html.EditorFor(model => model.View, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.View, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-10 col-md-2">
+                            <input type="submit" value="Lưu" class="btn btn-primary" />
+                            <a class="btn btn-danger pull-right" style="color:white" href="https://localhost:44344/Statt/Index">Hủy</a>
+                        </div>
+                        <div class="col-md-offset-5 col-md-2">
+
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
