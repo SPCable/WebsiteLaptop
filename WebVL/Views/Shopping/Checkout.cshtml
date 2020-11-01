@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    User user = (WebVL.Models.ApplicationUser)Session["Taikhoan"];
 }
 
 <h2>Checkout</h2>
@@ -28,24 +27,32 @@
                     <div class="cf-title">Địa chỉ giao hàng</div>
                     <div class="row">
                         <div class="col-md-7">
-                            <p>Thông tin người mua</p>
+                            <p>*Thông tin người mua</p>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="cf-radio-btns address-rb">
+                                <div class="cfr-item">
+                                    <input type="radio" name="pm" id="one">
+                                    <label for="one">Sử dụng địa chỉ thường dùng của tôi</label>
+                                </div>
+                                <div class="cfr-item">
+                                    <input type="radio" name="pm" id="two">
+                                    <label for="two">Thêm địa chỉ</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row address-inputs">
                         <div class="col-md-12">
-                            <input type="text" placeholder="Họ và tên" value="@user.Name" />
-                        </div>
-                        <div class="col-md-12">
-                            <input type="text" placeholder="Địa chỉ" value="@user.Address" >
-                        </div>
-                        <div class="col-md-12">
-                            <input type="text" placeholder="Email" value="@user.Email" >
+                            <input type="text" placeholder="Address">
+                            <input type="text" placeholder="Address line 2">
+                            <input type="text" placeholder="Country">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" placeholder="Zipcode" value="@user.Postcode" >
+                            <input type="text" placeholder="Zip code">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" placeholder="Phone no." value="@user.PhoneNumber" >
+                            <input type="text" placeholder="Phone no.">
                         </div>
                     </div>
                     <div class="cf-title">Phương thức giao hàng</div>
