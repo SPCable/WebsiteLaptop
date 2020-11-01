@@ -26,5 +26,8 @@ namespace WebVL.Context
         {
             return new ProductContext();
         }
+
+
+        //public System.Data.Entity.DbSet<WebVL.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
