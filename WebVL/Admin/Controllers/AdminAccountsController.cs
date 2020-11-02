@@ -19,28 +19,49 @@ namespace WebVL.Admin.Controllers
         // GET: AdminAccounts
         public async Task<ActionResult> Index()
         {
-            return View(await db.AdminAccounts.ToListAsync());
+            if (Session["TaikhoanAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "AdHome");
+            }
+            else
+            {
+                return View(await db.AdminAccounts.ToListAsync());
+            }
         }
 
         // GET: AdminAccounts/Details/5
         public async Task<ActionResult> Details(string id)
         {
-            if (id == null)
+            if (Session["TaikhoanAdmin"] == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("LoginAdmin", "AdHome");
             }
-            AdminAccount adminAccount = await db.AdminAccounts.FindAsync(id);
-            if (adminAccount == null)
+            else
             {
-                return HttpNotFound();
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                AdminAccount adminAccount = await db.AdminAccounts.FindAsync(id);
+                if (adminAccount == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(adminAccount);
             }
-            return View(adminAccount);
         }
 
         // GET: AdminAccounts/Create
         public ActionResult Create()
         {
-            return View();
+            if (Session["TaikhoanAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "AdHome");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         // POST: AdminAccounts/Create
@@ -50,29 +71,43 @@ namespace WebVL.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "AdminId,UserAdmin,PassAdmin,AdminName")] AdminAccount adminAccount)
         {
-            if (ModelState.IsValid)
+            if (Session["TaikhoanAdmin"] == null)
             {
-                db.AdminAccounts.Add(adminAccount);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("LoginAdmin", "AdHome");
             }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.AdminAccounts.Add(adminAccount);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
 
-            return View(adminAccount);
+                return View(adminAccount);
+            }
         }
 
         // GET: AdminAccounts/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
-            if (id == null)
+            if (Session["TaikhoanAdmin"] == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("LoginAdmin", "AdHome");
             }
-            AdminAccount adminAccount = await db.AdminAccounts.FindAsync(id);
-            if (adminAccount == null)
+            else
             {
-                return HttpNotFound();
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                AdminAccount adminAccount = await db.AdminAccounts.FindAsync(id);
+                if (adminAccount == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(adminAccount);
             }
-            return View(adminAccount);
         }
 
         // POST: AdminAccounts/Edit/5
@@ -82,29 +117,43 @@ namespace WebVL.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "AdminId,UserAdmin,PassAdmin,AdminName")] AdminAccount adminAccount)
         {
-            if (ModelState.IsValid)
+            if (Session["TaikhoanAdmin"] == null)
             {
-                db.Entry(adminAccount).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-
-                return RedirectToAction("Details", new { id = Session["TaikhoanAdminID"] });
+                return RedirectToAction("LoginAdmin", "AdHome");
             }
-            return View(adminAccount);
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(adminAccount).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+
+                    return RedirectToAction("Details", new { id = Session["TaikhoanAdminID"] });
+                }
+                return View(adminAccount);
+            }
         }
 
         // GET: AdminAccounts/Delete/5
         public async Task<ActionResult> Delete(string id)
         {
-            if (id == null)
+            if (Session["TaikhoanAdmin"] == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("LoginAdmin", "AdHome");
             }
-            AdminAccount adminAccount = await db.AdminAccounts.FindAsync(id);
-            if (adminAccount == null)
+            else
             {
-                return HttpNotFound();
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                AdminAccount adminAccount = await db.AdminAccounts.FindAsync(id);
+                if (adminAccount == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(adminAccount);
             }
-            return View(adminAccount);
         }
 
         // POST: AdminAccounts/Delete/5
@@ -112,10 +161,17 @@ namespace WebVL.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            AdminAccount adminAccount = await db.AdminAccounts.FindAsync(id);
-            db.AdminAccounts.Remove(adminAccount);
-            await db.SaveChangesAsync();
-            return RedirectToAction("LoginAdmin", "AdHome");
+            if (Session["TaikhoanAdmin"] == null)
+            {
+                return RedirectToAction("LoginAdmin", "AdHome");
+            }
+            else
+            {
+                AdminAccount adminAccount = await db.AdminAccounts.FindAsync(id);
+                db.AdminAccounts.Remove(adminAccount);
+                await db.SaveChangesAsync();
+                return RedirectToAction("LoginAdmin", "AdHome");
+            }
         }
 
         protected override void Dispose(bool disposing)
