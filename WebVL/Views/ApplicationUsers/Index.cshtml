@@ -1,4 +1,8 @@
-﻿@model IEnumerable<WebVL.Models.ApplicationUser>
+﻿@using WebVL.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebVL.Models.ApplicationUser>
+
+@*@model IEnumerable<WebVL.Models.ApplicationUser>*@
 
 @{
     ViewBag.Title = "Index";
@@ -80,7 +84,7 @@
 
                 </table>
                 <div class="page-number" style="position:relative; left:1030px">
-                    @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))*@
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
                 </div>
                 <style>
                     .page-number li {

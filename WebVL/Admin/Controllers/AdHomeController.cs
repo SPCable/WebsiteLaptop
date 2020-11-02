@@ -716,6 +716,7 @@ namespace WebVL.Admin.Ad.Controllers
 
                     Session["TaikhoanAdmin"] = adlogin;
                     Session["TaikhoanAdminName"] = adlogin.AdminName.ToString();
+                    Session["TaikhoanAdminID"] = adlogin.AdminId.ToString();
 
 
                     return RedirectToAction("Index", "AdHome");

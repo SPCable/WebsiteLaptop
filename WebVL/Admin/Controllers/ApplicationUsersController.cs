@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebVL.Context;
 using WebVL.Models;
+using PagedList;
 
 namespace WebVL.Admin.Controllers
 {
@@ -17,7 +18,7 @@ namespace WebVL.Admin.Controllers
         private ProductContext db = new ProductContext();
 
         // GET: ApplicationUsers
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? page)
         {
             if (Session["TaikhoanAdmin"] == null)
             {
@@ -25,7 +26,12 @@ namespace WebVL.Admin.Controllers
             }
             else
             {
-                return View(await db.Users.ToListAsync());
+                int pageNumber = (page ?? 1);
+                int pageSize = 8;
+                var usersAcc = db.Users.ToList();
+
+                return View(usersAcc.OrderBy(n => n.Name).ToPagedList(pageNumber, pageSize));
+                //return View(await db.Users.ToListAsync());
             }
         }
 

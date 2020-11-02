@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace WebVL.Controllers
     {
         // GET: Statt
         ProductContext db = new ProductContext();
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             if (Session["TaikhoanAdmin"] == null)
             {
@@ -22,8 +23,13 @@ namespace WebVL.Controllers
             }
             else
             {
+
+                int pageNumber = (page ?? 1);
+                int pageSize = 8;
                 var statt = from tt in db.Statts select tt;
-                return View(statt);
+
+                return View(statt.OrderBy(n => n.Idpost).ToPagedList(pageNumber, pageSize));
+
             }
         }
         public ActionResult Delete(int id)
