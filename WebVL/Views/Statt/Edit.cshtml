@@ -42,6 +42,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.Daypost,"Ngày Đăng", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-7 mb-3">
+                            @*<input type="datetime-local" value="@Model.Daypost" name="Daypost" />*@
                             @Html.EditorFor(model => model.Daypost, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Daypost, "", new { @class = "text-danger" })
                         </div>
