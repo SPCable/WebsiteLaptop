@@ -513,7 +513,7 @@ namespace WebVL.Admin.Ad.Controllers
         /// <returns></returns>
 
 
-        public ActionResult Category()
+        public ActionResult Category(int? page)
         {
             if (Session["TaikhoanAdmin"] == null)
             {
@@ -521,8 +521,13 @@ namespace WebVL.Admin.Ad.Controllers
             }
             else
             {
+
+                int pageNumber = (page ?? 1);
+                int pageSize = 8;
                 var categoryList = db.Categories.ToList();
-                return View(categoryList);
+
+                return View(categoryList.OrderBy(n => n.categoryId).ToPagedList(pageNumber, pageSize));
+
             }
         }
 
