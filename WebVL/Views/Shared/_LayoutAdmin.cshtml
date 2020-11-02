@@ -113,12 +113,12 @@
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <button type="button" tabindex="0" class="dropdown-item">User Account</button>
+                                            <input type="button" tabindex="0" class="btn btn-primary dropdown-item" value="User Account" onclick="location.href='@Url.Action("Details", "AdminAccounts", new { id = Session["TaikhoanAdminID"]})'" />
                                             <button type="button" tabindex="0" class="dropdown-item">Settings</button>
                                             <h6 tabindex="-1" class="dropdown-header">Header</h6>
                                             <button type="button" tabindex="0" class="dropdown-item">Actions</button>
                                             <div tabindex="-1" class="dropdown-divider"></div>
-                                            
+
                                             @if (adminNAME != null)
                                             {
                                                 <input type="button" tabindex="0" class="dropdown-item text-danger" value="Sign Out" onclick="location.href='@Url.Action("LogoutAdmin", "AdHome")'" />

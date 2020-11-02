@@ -1,4 +1,8 @@
-﻿@model IEnumerable<WebVL.Models.Order>
+﻿@using WebVL.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebVL.Models.Order>
+
+@*@model IEnumerable<WebVL.Models.Order>*@
 
 @{
     ViewBag.Title = "Index";
@@ -84,21 +88,21 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.DayBooks)
                             </td>
-                            
-                                @if (item.Status == 1)
-                                {
-                                    <th class="text-warning">Đang giao hàng</th>
-                                }
 
-                                @if (item.Status == 2)
-                                {
-                                    <th style="color:red">Chưa giao hàng</th>
-                                }
-                                @if (item.Status == 3)
-                                {
-                                    <th class="text-success">Đã giao hàng</th>
-                                }
-                            
+                            @if (item.Status == 1)
+                            {
+                                <th class="text-warning">Đang giao hàng</th>
+                            }
+
+                            @if (item.Status == 2)
+                            {
+                                <th style="color:red">Chưa giao hàng</th>
+                            }
+                            @if (item.Status == 3)
+                            {
+                                <th class="text-success">Đã giao hàng</th>
+                            }
+
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.IdBill }) -
                                 @*@Html.ActionLink("Details", "Details", new { id = item.IdBill }) -*@
@@ -109,7 +113,7 @@
 
                 </table>
                 <div class="page-number" style="position:relative; left:1030px">
-                    @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))*@
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
                 </div>
                 <style>
                     .page-number li {

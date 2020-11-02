@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,7 @@ namespace WebVL.Controllers
         // GET: OrderSp
         ProductContext db = new ProductContext();
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             if (Session["TaikhoanAdmin"] == null)
             {
@@ -21,8 +22,12 @@ namespace WebVL.Controllers
             }
             else
             {
+
+                int pageNumber = (page ?? 1);
+                int pageSize = 8;
                 var order = from tt in db.Orders select tt;
-                return View(order);
+
+                return View(order.OrderBy(n => n.IdBill).ToPagedList(pageNumber, pageSize));
             }
         }
         public ActionResult Delete(int id)
