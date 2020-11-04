@@ -112,7 +112,7 @@
                     }
 
                 </table>
-                <div class="page-number" style="position:relative; left:1030px">
+                <div class="page-number" style="position:relative">
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
                 </div>
                 <style>

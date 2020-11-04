@@ -11,7 +11,13 @@ namespace WebVL.Models
     {
         [Key]
         public string ProductId { get; set; }
+
         public string productName { get; set; }
+
+        public string Cpu { get; set; }
+
+        public string OpSys { get; set; }
+
         public double productPrice { get; set; }
 
         public double productDiscout { get; set; }

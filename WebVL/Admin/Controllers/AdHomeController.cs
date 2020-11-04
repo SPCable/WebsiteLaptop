@@ -141,6 +141,8 @@ namespace WebVL.Admin.Ad.Controllers
                         {
                             ProductId = product.ProductId,
                             productName = product.productName,
+                            Cpu = product.Cpu,
+                            OpSys = product.OpSys,
                             productPrice = product.productPrice,
                             productDiscout = product.productDiscout,
                             productView = product.productView,
