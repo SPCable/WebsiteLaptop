@@ -1,4 +1,4 @@
-﻿using PagedList;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,6 +80,12 @@ namespace WebVL.Controllers
             }
             else
             {
+                cargo.Address = address;
+                cargo.DayBooks = daybook;
+                cargo.NameCus = namecus;
+                cargo.Price = price;
+                cargo.Status = Int32.Parse(status);
+
                 var cargo = db.Orders.First(m => m.IdBill == id);
                 var namecargo = collection["Cargo"];
                 var daybook = collection["DayBooks"];
@@ -103,6 +109,7 @@ namespace WebVL.Controllers
                     cargo.NameCus = namecus;
                     cargo.Price = price;
                     cargo.Status = Int32.Parse(status);
+
 
                     UpdateModel(namecargo);
                     UpdateModel(price);

@@ -10,10 +10,8 @@ namespace WebVL.Models
     {
         [Key]
         public int IdBill { get; set; }
-        public int IdCus { get; set; }
-        public string Cargo { get; set; }
+        public string IdCus { get; set; }
         public string Price { get; set; }
-        public string Count { get; set; }
         public string Address { get; set; }
         public string NameCus { get; set; }
         public string DayBooks { get; set; }
