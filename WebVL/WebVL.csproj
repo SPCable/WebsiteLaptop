@@ -191,14 +191,6 @@
     <Compile Include="Migrations\202010270813450_userrrr.Designer.cs">
       <DependentUpon>202010270813450_userrrr.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011040217027_up user.cs" />
-    <Compile Include="Migrations\202011040217027_up user.Designer.cs">
-      <DependentUpon>202011040217027_up user.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011040329394_up user 1.cs" />
-    <Compile Include="Migrations\202011040329394_up user 1.Designer.cs">
-      <DependentUpon>202011040329394_up user 1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminAccount.cs" />
@@ -207,6 +199,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ShoppingCard.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\Statt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -631,6 +624,7 @@
     <Content Include="Views\Home\Laptop.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\Product2.cshtml" />
     <Content Include="Views\Home\DeXuat.cshtml" />
     <Content Include="Views\Shopping\ShoppingCart.cshtml" />
     <Content Include="Views\Shopping\ShoppingCartPartial.cshtml" />
@@ -660,7 +654,6 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Shared\_LayoutLoginAdmin.cshtml" />
     <Content Include="Views\Manage\Edit.cshtml" />
-    <Content Include="Views\Shopping\Xacnhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\" />
@@ -682,12 +675,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010270813450_userrrr.resx">
       <DependentUpon>202010270813450_userrrr.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011040217027_up user.resx">
-      <DependentUpon>202011040217027_up user.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011040329394_up user 1.resx">
-      <DependentUpon>202011040329394_up user 1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

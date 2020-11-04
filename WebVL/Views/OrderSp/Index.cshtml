@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/AdHome/_Layout.cshtml";
 }
 
 <h2>Index</h2>
@@ -13,28 +13,28 @@
 <table class="table">
     <tr>
         <th>
-           Id
+            @Html.DisplayNameFor(model => model.IdCus)
         </th>
         <th>
-            Tên sản phẩm
+            @Html.DisplayNameFor(model => model.Cargo)
         </th>
         <th>
-            Tổng giá sản phẩm
+            @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-           Số lượng
+            @Html.DisplayNameFor(model => model.Count)
         </th>
         <th>
-           Địa chỉ giao hàng
+            @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
-            Tên người nhận
+            @Html.DisplayNameFor(model => model.NameCus)
         </th>
         <th>
-           Ngày đặt hàng
+            @Html.DisplayNameFor(model => model.DayBooks)
         </th>
         <th>
-            Trạng thái giao hàng
+            @Html.DisplayNameFor(model => model.Status)
         </th>
         <th></th>
     </tr>

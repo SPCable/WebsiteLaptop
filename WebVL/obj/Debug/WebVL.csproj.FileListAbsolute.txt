@@ -120,5 +120,4 @@ D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.csproj.Co
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.csproj.CopyComplete
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.dll
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.pdb
-D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.Migrations.upuser.resources
-D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.Migrations.upuser1.resources
+D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.csprojAssemblyReference.cache
