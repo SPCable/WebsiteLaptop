@@ -1,17 +1,88 @@
 ﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+        ViewBag.Title = "Contact";
+    }
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <h2>@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+
+    <address>
+        One Microsoft Way<br />
+        Redmond, WA 98052-6399<br />
+        <abbr title="Phone">P:</abbr>
+        425.555.0100
+    </address>
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
+
+
+
+<head>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFa5oxfB0TXKTCbxkoWA5-bv95kD3Fr9k&callback=initMap&libraries=&v=weekly"
+            defer></script>
+    <style type="text/css">
+        /* Always set the map height explicitly to define the size of the div
+            * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script>
+        let map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8,
+            });
+        }
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Maps - Implement in your applications Google or vector maps.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="Implement in your applications Google or vector maps.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link href="~/Admin/main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-main__outer">
+        <div class="app-main__inner">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <div class="card-title">World Map</div>
+                            <div id="world-map-gdp" style="width: 100%; height: 300px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="main-card mb-3 card">
+                        <div class="card-body">
+                            <div class="card-title">Google Maps</div>
+                            <div style="height: 300px; width: 710px;" id="map"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    </div>
+    </div>
+    <script type="text/javascript" src="~/Admin/assets/scripts/main.js"></script>
+</body>
