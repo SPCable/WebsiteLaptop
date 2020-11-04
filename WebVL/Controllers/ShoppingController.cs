@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
@@ -80,22 +81,12 @@ namespace WebVL.Controllers
         public ActionResult ShoppingCartPartial()
         {
             ViewBag.Total = Total();
-            ViewBag.Amout = Amout(); 
+            ViewBag.Amout = Amout();
             return PartialView();
         }
+        [HttpGet]
         public ActionResult Checkout()
         {
-            if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            if (Session["ShoppingCart"] == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-             ApplicationUser user =  (ApplicationUser)Session["Taikhoan"];
-             
 
             List<ShoppingCart> shoppingCarts = ShoppingCarts();
             ViewBag.Total = Total();
@@ -109,8 +100,8 @@ namespace WebVL.Controllers
             if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
             {
                 return RedirectToAction("Login", "Account");
-            }    
-            if(Session["ShoppingCart"] == null)
+            }
+            if (Session["ShoppingCart"] == null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -118,8 +109,29 @@ namespace WebVL.Controllers
             List<ShoppingCart> shoppingCarts = ShoppingCarts();
             ViewBag.Total = Total();
             ViewBag.Amout = Amout();
-            return View(shoppingCarts);
+
+            Order order = new Order();
+
+            var kh = (WebVL.Models.ApplicationUser)Session["Taikhoan"];
+
+
+            order.IdCus = kh.Id;
+            order.NameCus = kh.Name;
+            order.Price = Total().ToString();
+            order.DayBooks = DateTime.Now.ToString();
+            order.Status = 2;
+            order.Address = kh.Address;
+            db.Orders.Add(order);
+            db.SaveChanges();
+            Session["ShoppingCart"] = null;
+            Session["Chitietdonhang"] = order;
+            return RedirectToAction("Xacnhan", "Shopping");
         }
 
+        public ActionResult Xacnhan()
+        {
+        
+            return View();
+        }
     }
 }
