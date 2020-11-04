@@ -42,6 +42,12 @@
                             Tên Sản Phẩm
                         </th>
                         <th>
+                            CPU
+                        </th>
+                        <th>
+                            OS
+                        </th>
+                        <th>
                             Giá
                         </th>
                         <th>
@@ -70,6 +76,12 @@
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.productName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cpu)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OpSys)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.productPrice)
@@ -119,7 +131,7 @@
                         </tr>
                     }
                 </table>
-                <div class="page-number" style="position:relative; left:1030px">
+                <div class="page-number" style="position:relative">
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page}))
                 </div>
                 <style>

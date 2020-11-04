@@ -1,10 +1,15 @@
-﻿@model IEnumerable<WebVL.Models.Order>
+@using WebVL.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebVL.Models.Order>
+
+@*@model IEnumerable<WebVL.Models.Order>*@
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+@*===================================*@
 <h2>Index</h2>
 
 <p>
@@ -84,5 +89,140 @@
         </td>
     </tr>
 }
+@*=====================*@
 
-</table>
+
+<div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+
+
+            <div>
+                <h3>Đơn Hàng</h3>
+                <h5 class="text-success">@TempData["EditOrder"]</h5>
+                <h5 class="text-danger">@TempData["DeleteOrder"]</h5>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="main-card mb-3 card">
+
+    <div class="card-body">
+
+        <h5 class="card-title">Danh Sách Đơn Hàng</h5>
+
+
+        <form class="needs-validation" novalidate>
+            <div class="form-row">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Mã Khách Hàng
+                        </th>
+                        <th>
+                            Món Hàng
+                        </th>
+                        <th>
+                            Giá
+                        </th>
+                        <th>
+                            Số Lượng
+                        </th>
+                        <th>
+                            Địa Chỉ
+                        </th>
+                        <th>
+                            Họ Tên Khách Hàng
+                        </th>
+                        <th>
+                            Ngày Đặt
+                        </th>
+                        <th>
+                            Tình Trạng Đặt Hàng
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdCus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cargo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Count)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.NameCus)
+                            </th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DayBooks)
+                            </td>
+
+                            @if (item.Status == 1)
+                            {
+                                <th class="text-warning">Đang giao hàng</th>
+                            }
+
+                            @if (item.Status == 2)
+                            {
+                                <th style="color:red">Chưa giao hàng</th>
+                            }
+                            @if (item.Status == 3)
+                            {
+                                <th class="text-success">Đã giao hàng</th>
+                            }
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.IdBill }) -
+                                @*@Html.ActionLink("Details", "Details", new { id = item.IdBill }) -*@
+                                @Html.ActionLink("Delete", "Delete", new { id = item.IdBill })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                <div class="page-number" style="position:relative">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                </div>
+                <style>
+                    .page-number li {
+                        display: inline;
+                    }
+                </style>
+            </div>
+        </form>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+    </div>
+</div>
