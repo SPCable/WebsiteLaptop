@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -78,11 +80,12 @@ namespace WebVL.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var kh = db.Users.SingleOrDefault(n => n.Email == model.Email);
             switch (result)
             {
                 case SignInStatus.Success:
                     {
-                        Session["Taikhoan"] = User;
+                        Session["Taikhoan"] = kh;
                         return RedirectToLocal(returnUrl);
                     }
                     

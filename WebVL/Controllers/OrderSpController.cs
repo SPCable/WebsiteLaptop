@@ -57,9 +57,6 @@ namespace WebVL.Controllers
             }
             else
             {
-
-                cargo.Cargo= namecargo;
-                cargo.Count = count;
                 cargo.Address = address;
                 cargo.DayBooks = daybook;
                 cargo.NameCus = namecus;

@@ -3,10 +3,8 @@
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    User user = (WebVL.Models.ApplicationUser)Session["Taikhoan"];
+    var kh = (WebVL.Models.ApplicationUser)Session["Taikhoan"];
 }
-
-<h2>Checkout</h2>
 
 
 <div class="page-top-info">
@@ -18,8 +16,7 @@
         </div>
     </div>
 </div>
-<!-- Page info end -->
-<!-- checkout section  -->
+
 <section class="checkout-section spad">
     <div class="container">
         <div class="row">
@@ -33,54 +30,80 @@
                     </div>
                     <div class="row address-inputs">
                         <div class="col-md-12">
-                            <input type="text" placeholder="Họ và tên" value="@user.Name" />
+                            <input type="text" placeholder="Họ và tên" value="@kh.Name" />
                         </div>
                         <div class="col-md-12">
-                            <input type="text" placeholder="Địa chỉ" value="@user.Address" >
+                            <input type="text" placeholder="Địa chỉ" value="@kh.Address">
                         </div>
                         <div class="col-md-12">
-                            <input type="text" placeholder="Email" value="@user.Email" >
+                            <input type="text" placeholder="Email" value="@kh.Email">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" placeholder="Zipcode" value="@user.Postcode" >
+                            <input type="text" placeholder="Zipcode" value="@kh.Postcode">
                         </div>
                         <div class="col-md-6">
-                            <input type="text" placeholder="Phone no." value="@user.PhoneNumber" >
+                            <input type="text" placeholder="Phone no." value="@kh.PhoneNumber">
                         </div>
                     </div>
                     <div class="cf-title">Phương thức giao hàng</div>
                     <div class="row shipping-btns">
                         <div class="col-6">
-                            <h4>Tiêu chuẩn</h4>
                         </div>
                         <div class="col-6">
                             <div class="cf-radio-btns">
                                 <div class="cfr-item">
                                     <input type="radio" name="shipping" id="ship-1">
-                                    <label for="ship-1">Miễn phí vận chuyển</label>
+                                    <label for="ship-1">Nhận hàng tại cửa hàng</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-6">
-                            <h4>Giao hàng vào ngày hôm sau  </h4>
                         </div>
                         <div class="col-6">
                             <div class="cf-radio-btns">
                                 <div class="cfr-item">
                                     <input type="radio" name="shipping" id="ship-2">
-                                    <label for="ship-2">$3.45</label>
+                                    <label for="ship-2">Giao hàng tận nơi</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="cf-title">Thanh toán</div>
-                    <ul class="payment-list">
-                        <li>Paypal<a href="#"><img src="img/paypal.png" alt=""></a></li>
-                        <li>Thẻ<a href="#"><img src="img/mastercart.png" alt=""></a></li>
-                        <li>Thanh toán khi nhận hàng</li>
-                    </ul>
-                    <button class="site-btn submit-order-btn">Xác nhận đơn hàng</button>
-                </form>
+                        <div class="row shipping-btns">
+                            <ul class="payment-list">
+
+                                <li>
+                                    <div class="cf-radio-btns">
+                                        <div class="cfr-item">
+                                            <input type="radio" name="payment" id="3">
+                                            <label for="3">Paypal</label>
+                                            <img src="" />
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="cf-radio-btns">
+                                        <div class="cfr-item">
+                                            <input type="radio" name="payment" id="1">
+                                            <label for="1">Momo</label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="cf-radio-btns">
+                                        <div class="cfr-item">
+                                            <input type="radio" name="payment" id="2">
+                                            <label for="2">Thanh toán khi nhận hàng</label>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class="site-btn submit-order-btn">
+                            @Html.ActionLink("Xác nhận đơn hàng", "Payment")  </button>
+                     
+</form>
             </div>
             <div class="col-lg-4 order-1 order-lg-2">
                 <div class="checkout-cart">
@@ -99,7 +122,7 @@
                     <ul class="price-list">
                         <li>Tổng<span>@ViewBag.Total</span></li>
                         <li>Phí giao hàng<span>miễn phí giao hàng</span></li>
-                        <li class="total">Total<span>$99.90</span></li>
+                        <li class="total">Tổng tiền<span>@ViewBag.Total</span></li>
                     </ul>
                 </div>
             </div>
