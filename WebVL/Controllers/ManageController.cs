@@ -66,7 +66,19 @@ namespace WebVL.Controllers
             return View();
         }
 
-
+        public ActionResult History( string id )
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var order = db.Orders.Where(n => n.IdCus == id).ToList();
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
 
 
         //
