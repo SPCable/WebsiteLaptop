@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-lg-6 product-details">
                     <h2 class="p-title">@Model.SingleOrDefault().productName</h2>
-                    <h3 class="p-price">@Model.Single().productPrice</h3>
+                    <h3 class="p-price">@String.Format("{0:0,0 vnđ}",Model.Single().productPrice)</h3>
                     @if (Model.Single().productAmount == 0)
                     {
                         <h4 class="p-stock">Tình trạng: <span>Hết hàng</span></h4>
@@ -152,7 +152,7 @@
                                 </div>
                             </div>
                             <div class="pi-text">
-                                <h6>@item.productPrice</h6>
+                                <h6>@String.Format("{0:0,0 vnđ}", item.productPrice)</h6>
                                 <p>@item.productName </p>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.EnterpriseServices;
 using System.Linq;
@@ -94,7 +94,7 @@ namespace WebVL.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-             ApplicationUser user =  (ApplicationUser)Session["Taikhoan"];
+             
              
 
             List<ShoppingCart> shoppingCarts = ShoppingCarts();
@@ -103,14 +103,15 @@ namespace WebVL.Controllers
             return View(shoppingCarts);
         }
 
+
         public ActionResult Payment()
         {
 
             if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
             {
                 return RedirectToAction("Login", "Account");
-            }    
-            if(Session["ShoppingCart"] == null)
+            }
+            if (Session["ShoppingCart"] == null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -118,7 +119,47 @@ namespace WebVL.Controllers
             List<ShoppingCart> shoppingCarts = ShoppingCarts();
             ViewBag.Total = Total();
             ViewBag.Amout = Amout();
-            return View(shoppingCarts);
+
+            Order order = new Order();
+            var kh = (ApplicationUser)Session["Taikhoan"];
+            order.IdCus = kh.Id;
+            order.NameCus = kh.Name;
+            order.Price = Total().ToString();
+            order.DayBooks = DateTime.Now.ToString();
+            order.Status = 2;
+            order.Address = kh.Address;
+            db.Orders.Add(order);
+            db.SaveChanges();
+
+            try
+            {
+
+               
+                foreach(var item in shoppingCarts)
+                {
+                    OrdersDetails ordersDetails = new OrdersDetails();
+                    ordersDetails.OrderId = order.IdBill;
+                    ordersDetails.ProductId = item.Id;
+                    ordersDetails.Price = item.Price;
+                    db.ordersDetails.Add(ordersDetails);
+                }
+                db.SaveChanges();
+
+
+            }catch(Exception ex)
+            {
+                return HttpNotFound();
+            }
+          
+
+            Session["ShoppingCart"] = null;
+            Session["Chitietdonhang"] = order;
+            return RedirectToAction("Xacnhan", "Shopping");
+
+        }
+        public ActionResult Xacnhan()
+        {
+            return View();
         }
 
     }

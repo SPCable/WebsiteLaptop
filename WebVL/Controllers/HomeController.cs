@@ -75,18 +75,17 @@ namespace WebVL.Controllers
 
 
 
-        public ActionResult search(double? gia, string name, string id)
-        {
-
-            return View();
-        }
-
 
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Trangchu()
+        {
             return View();
         }
     }
