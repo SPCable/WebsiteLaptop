@@ -4,6 +4,9 @@ using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MomoGateWay.Model;
+using MultiShop.Models;
+using Newtonsoft.Json.Linq;
 using WebVL.Context;
 using WebVL.Models;
 
@@ -162,5 +165,89 @@ namespace WebVL.Controllers
             return View();
         }
 
+        public ActionResult XoaSP(string Idpro)
+        {
+            {
+                List<ShoppingCart> shoppingCarts = ShoppingCarts();
+                ShoppingCart card = shoppingCarts.SingleOrDefault(n => n.Id == Idpro);
+                if (card != null)
+                {
+                    shoppingCarts.RemoveAll(n => n.Id == Idpro);
+                    return RedirectToAction("ShoppingCart");
+                }
+                if (shoppingCarts.Count == 0)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return RedirectToAction("ShoppingCart");
+            }
+        }
+
+        public ActionResult Capnhat(string Idpro, FormCollection f)
+        {
+            {
+                List<ShoppingCart> shoppingCarts = ShoppingCarts();
+                ShoppingCart card = shoppingCarts.SingleOrDefault(n => n.Id == Idpro);
+                if (card != null)
+                {
+                    card.Number = int.Parse(f["txt"].ToString());
+                }
+                return RedirectToAction("ShoppingCart");
+            }
+        }
+        public ActionResult PayMomo()
+        {
+            List<ShoppingCart> shoppingCarts = ShoppingCarts();
+            var model = new Order();
+            //model.CustomerId = User.Identity.Name;
+            //model.OrderDate = DateTime.Now.Date;
+            model.Price = Total().ToString();
+
+            string endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
+            string partnerCode = "MOMO5RGX20191128";
+            string accessKey = "M8brj9K6E22vXoDB";
+            string serectKey = "nqQiVSgDMy809JoPF6OzP5OdBUB550Y4";
+            string orderInfo = "DH" + DateTime.Now.ToString("yyyyMMđHHmmss");
+            string returnUrl = "https://momo.vn/return";
+            string notifyurl = "https://momo.vn/notify";
+
+            string amount = model.Price;
+            string orderid = Guid.NewGuid().ToString();
+            string requestId = Guid.NewGuid().ToString();
+            string extraData = "";
+
+
+            string rawHash = "partnerCode=" +
+               partnerCode + "&accessKey=" +
+               accessKey + "&requestId=" +
+               requestId + "&amount=" +
+               amount + "&orderId=" +
+               orderid + "&orderInfo=" +
+               orderInfo + "&returnUrl=" +
+               returnUrl + "&notifyUrl=" +
+               notifyurl + "&extraData=" +
+               extraData;
+
+            MomoSecurity crypto = new MomoSecurity();
+            string signature = crypto.signSHA256(rawHash, serectKey);
+            JObject message = new JObject()
+            {
+               { "partnerCode", partnerCode },
+                { "accessKey", accessKey },
+                { "requestId", requestId },
+                { "amount", amount },
+                { "orderId", orderid },
+                { "orderInfo", orderInfo },
+                { "returnUrl", returnUrl },
+                { "notifyUrl", notifyurl },
+                { "extraData", extraData },
+                { "requestType", "captureMoMoWallet" },
+                { "signature", signature }
+            };
+            string respon = PaymentRequest.sendPaymentRequest(endpoint, message.ToString());
+            JObject jmessage = JObject.Parse(respon);
+
+            return Redirect(jmessage.GetValue("payUrl").ToString());
+        }
     }
 }

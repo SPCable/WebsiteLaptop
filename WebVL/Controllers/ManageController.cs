@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -274,6 +275,10 @@ namespace WebVL.Controllers
         {
             if (ModelState.IsValid)
             {
+                LoginViewModel model = new LoginViewModel();
+                var kh = db.Users.SingleOrDefault(n => n.Email == model.Email);
+                Session["Taikhoan"] = null;
+                Session["Taikhoan"] = kh;
                 db.Entry(applicationUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

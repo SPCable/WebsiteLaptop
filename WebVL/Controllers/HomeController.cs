@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Permissions;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using WebVL.Context;
 using WebVL.Models;
 
@@ -13,11 +14,15 @@ namespace WebVL.Controllers
     public class HomeController : Controller
     {
         ProductContext productContext = new ProductContext();
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-
+            int pageNumber = (page ?? 1);
+            int pageSize = 20;
             var product = productContext.Products.ToList();
-            return View(product);
+
+            return View(product.OrderBy(n => n.ProductId).ToPagedList(pageNumber, pageSize));
+
+            
         }
 
         public ActionResult Category()
@@ -72,10 +77,18 @@ namespace WebVL.Controllers
             }
             return View();
         }
-
-
-
-
+        [HttpGet]
+        public ActionResult Result(string searching)
+        {
+            var a = productContext.Products.Where(x => x.productName.Contains(searching) || searching == null).ToList();
+            return View(a);
+        }
+        [HttpPost]
+        public ActionResult Result()
+        {
+            var a = productContext.Products.ToList();
+            return View(a);
+        }
 
         public ActionResult Contact()
         {

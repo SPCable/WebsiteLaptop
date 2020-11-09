@@ -33,7 +33,7 @@
                 @Html.DisplayFor(modelItem => item.NameCus)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @String.Format("{0:0,0 vnđ}", @Html.DisplayFor(modelItem => item.Price))
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Address)

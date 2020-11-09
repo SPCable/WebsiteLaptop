@@ -38,18 +38,14 @@
             <div class="row">
                 <div class="col-lg-2 text-center text-lg-left">
                     <!-- logo -->
-                    <a href="" class="site-logo">
-                        <img src="~/img/logo.png" alt="">
+                    <a href="@Url.Action("Trangchu","Home")" class="site-logo">
+                        <img style="margin-top:22px" src="~/img/logo.png" alt="">
                     </a>
                 </div>
                 <div class="col-xl-6 col-lg-5">
                     <form class="header-search-form">
-                        @using (Html.BeginForm("Result", "Home", FormMethod.Get))
-                        {   
-                           @Html.TextBox("searching")
-                           <button class="flaticon-search" type="button" onclick="location.href='@Url.Action("Result","Search")'"> </button>
-                        }
-                  </form>
+                        <img src="~/img/unknown.png" />
+                    </form>
                 </div>
                 <div class="col-xl-4 col-lg-5">
                     <div class="user-panel">
@@ -62,14 +58,18 @@
                             else
                             {
                                 <a>@Html.ActionLink("Đăng nhập", "Login", "Account")</a>
+
                             }
-
-
-
                         </div>
                         <div class="up-item">
-                           @Html.Action("ShoppingCartPartial", "Shopping")
+                            <div class="shopping-card">
+                                @Html.Action("ShoppingCartPartial", "Shopping")
+                            </div>
                         </div>
+                        @using (Html.BeginForm("Result", "Home", FormMethod.Get))
+                        {
+                            <input class="flaticon-search" value="Tìm kiếm" style="margin-top:22px; color:black" type="button" onclick="location.href='@Url.Action("Result","Home")'"> </input>
+                        }
                     </div>
                 </div>
             </div>
@@ -92,16 +92,13 @@
                     </ul>
                 </li>
                 <li><a href="#">Đăng bài</a></li>
-                <li><a href="#">Liên hệ</a></li>
+                <li><a href="@Url.Action("Contact","Home")">Liên hệ</a></li>
             </ul>
         </div>
     </nav>
 </header>
 
 <body>
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
     <div class="category-section spad">
         @RenderBody()
     </div>
