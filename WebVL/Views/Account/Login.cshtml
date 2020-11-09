@@ -4,35 +4,14 @@
     ViewBag.Title = "Log in";
 }
 
-
-<link rel="stylesheet" href="~/css1/bootstrap.min.css">
-<link rel="stylesheet" href="~/css1/owl.carousel.min.css">
-<link rel="stylesheet" href="~/css1/flaticon.css">
-<link rel="stylesheet" href="~/css1/slicknav.css">
-<link rel="stylesheet" href="~/css1/animate.min.css">
-<link rel="stylesheet" href="~/css1/magnific-popup.css">
-<link rel="stylesheet" href="~/css1/fontawesome-all.min.css">
-<link rel="stylesheet" href="~/css1/themify-icons.css">
-<link rel="stylesheet" href="~/css1/slick.css">
-<link rel="stylesheet" href="~/css1/nice-select.css">
-<link rel="stylesheet" href="~/css1/style.css">
-
-@*<link rel="stylesheet" href="~/css/bootstrap.min.css" />*@
-<link rel="stylesheet" href="~/css/font-awesome.min.css" />
-
-
-
 <section class="login_part section_padding ">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 col-md-6">
                 <div class="login_part_text text-center">
                     <div class="login_part_text_iner">
-                        <h2>New to our Shop?</h2>
-                        <p>
-                            There are advances being made in science and technology
-                            everyday, and a good example of this is the
-                        </p>
+                        <h2>Bạn chưa có tài khoản?</h2>
+                        <br />
                         <a>@Html.ActionLink("Tạo tài khoản mới", "Register")</a>
                     </div>
                 </div>
@@ -44,6 +23,7 @@
                             Welcome Back ! <br>
                             Please Sign in now
                         </h3>
+                        <br />
                         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                         {
                             @Html.AntiForgeryToken()
@@ -74,11 +54,7 @@
                             </form>
 
                         }
-                        <div class="col-md-4">
-                            <section id="socialLoginForm">
-                                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                            </section>
-                        </div>
+
                     </div>
                 </div>
             </div>

@@ -1,9 +1,12 @@
-﻿@model IEnumerable<WebVL.Models.Order>
-
+﻿
 @{
     ViewBag.Title = "Xacnhan";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var chitet = (WebVL.Models.Order)Session["Chitietdonhang"];
 }
 
-<h2>Đặt hàng thành công!</h2>
+
+
+<h2>Đặt hàng thành công!</h2>
+<h3> <a href="@Url.Action("Index","Home")"> Mua tiếp </a></h3>
+<img class="header-top" src="~/img/PAVILLION_15.jpg" />
+<img class="header-top" src="~/img/dell-gaming-laptop.jpg" />

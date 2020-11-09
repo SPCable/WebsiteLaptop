@@ -33,32 +33,37 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td class="product-col">
+                                <tr>
+                                    @using (Html.BeginForm("Capnhat", "Shopping", new { @Idpro = item.Id }))
+                                    {
+                                        <td class="product-col">    
                                             <img src="~/img/product/@Html.DisplayFor(modelItem => item.Img)" alt="">
                                             <div class="pc-title">
                                                 <h4> @Html.DisplayFor(modelItem => item.Name)</h4>
-                                                <p> @Html.DisplayFor(modelItem => item.Price) đ</p>
-                                                @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                                                <p> @String.Format("{0:0,0 vnđ}", item.Price)</p>
+                                                @Html.ActionLink("Xóa", "XoaSP", new { Idpro = item.Id })
                                             </div>
                                         </td>
+
                                         <td class="quy-col">
                                             <div class="quantity">
                                                 <div class="pro-qty">
-                                                    <input type="text" value=@Html.DisplayFor(modelItem => item.Number)>
+                                                    <input type="text" name="txt" value=@Html.DisplayFor(modelItem => item.Number)>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="size-col"><h4>@Html.DisplayFor(modelItem => item.Total) đ</h4></td>
-                                        <td><a href="">Cập nhật</a></td>
-                                    </tr>
+                                        <td class="size-col"><h4>@String.Format("{0:0,0 vnđ}", item.Total)</h4></td>
+                                        <td> <input type="submit" value="Cập nhật"/> </td>
+                                    }
+
+                                </tr>
                                 }
                             </tbody>
 
                         </table>
                     </div>
                     <div class="total-cost">
-                        <h6>Tổng tiền <span>@ViewBag.Total đ</span></h6>
+                        <h6>Tổng tiền <span>@String.Format("{0:0,0 vnđ}", ViewBag.Total)</span></h6>
                     </div>
                 </div>
             </div>

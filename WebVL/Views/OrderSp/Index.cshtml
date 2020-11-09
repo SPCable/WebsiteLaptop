@@ -1,4 +1,4 @@
-@using WebVL.Models
+﻿@using WebVL.Models
 @using PagedList.Mvc;
 @model PagedList.PagedList<WebVL.Models.Order>
 
@@ -9,87 +9,6 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-@*===================================*@
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-           Id
-        </th>
-        <th>
-            Tên sản phẩm
-        </th>
-        <th>
-            Tổng giá sản phẩm
-        </th>
-        <th>
-           Số lượng
-        </th>
-        <th>
-           Địa chỉ giao hàng
-        </th>
-        <th>
-            Tên người nhận
-        </th>
-        <th>
-           Ngày đặt hàng
-        </th>
-        <th>
-            Trạng thái giao hàng
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdCus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cargo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Count)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NameCus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DayBooks)
-        </td>
-        <td>
-            @if(item.Status == 1)
-            {
-            <p>Đang giao hàng</p>
-            }
-
-            @if(item.Status == 2)
-            {
-            <p>Chưa giao hàng</p>
-            }
-            @if(item.Status == 3)
-            {
-            <p>Đã giao hàng</p>
-            }
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdBill }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdBill }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdBill })
-        </td>
-    </tr>
-}
-@*=====================*@
 
 
 <div class="app-page-title">
@@ -122,9 +41,6 @@
                             Mã Khách Hàng
                         </th>
                         <th>
-                            Món Hàng
-                        </th>
-                        <th>
                             Giá
                         </th>
                         <th>
@@ -150,9 +66,6 @@
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.IdCus)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Cargo)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Price)

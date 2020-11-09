@@ -1,6 +1,7 @@
-using PagedList;
+﻿using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -80,49 +81,16 @@ namespace WebVL.Controllers
             }
             else
             {
-                cargo.Address = address;
-                cargo.DayBooks = daybook;
-                cargo.NameCus = namecus;
-                cargo.Price = price;
-                cargo.Status = Int32.Parse(status);
-
-                var cargo = db.Orders.First(m => m.IdBill == id);
-                var namecargo = collection["Cargo"];
-                var daybook = collection["DayBooks"];
-                var namecus = collection["NameCus"];
-                var count = collection["Count"];
-                var price = collection["Price"];
-                var address = collection["Address"];
-                var status = collection["Status"];
-                cargo.IdBill = id;
-                if (string.IsNullOrEmpty(namecargo))
-                {
-                    ViewData["Error"] = "Bill id is null";
-                }
-                else
-                {
-
-                    cargo.Cargo = namecargo;
-                    cargo.Count = count;
-                    cargo.Address = address;
-                    cargo.DayBooks = daybook;
-                    cargo.NameCus = namecus;
-                    cargo.Price = price;
-                    cargo.Status = Int32.Parse(status);
+                db.Entry(order).State = EntityState.Modified;
 
 
-                    UpdateModel(namecargo);
-                    UpdateModel(price);
-                    UpdateModel(daybook);
-                    UpdateModel(address);
-                    UpdateModel(namecus);
-                    UpdateModel(count);
-                    UpdateModel(status);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return this.Edit(id);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+                
+
             }
+            //return this.Edit(id);
+
         }
     }
 }

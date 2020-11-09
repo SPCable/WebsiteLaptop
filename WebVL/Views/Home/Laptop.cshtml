@@ -28,16 +28,12 @@
                         </div>
 
                         <div class="pi-text">
-                            <h6>  @Html.DisplayFor(modelItem => item.productPrice)</h6>
+                            <h6>  @String.Format("{0:0,0 vnđ}", item.productPrice)</h6>
                             <p> @Html.DisplayFor(modelItem => item.productName)</p>
                         </div>
                     </div>
                 </div>
             }
-
-            <div class="text-center w-100 pt-3">
-                <button class="site-btn sb-line sb-dark">LOAD MORE</button>
-            </div>
         </div>
     </div>
 </body>

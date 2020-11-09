@@ -743,7 +743,10 @@ namespace WebVL.Admin.Ad.Controllers
 
         }
 
-
+        public ActionResult TopProductSales()
+        {
+            return View();
+        }
 
         /////////////////////////
     }

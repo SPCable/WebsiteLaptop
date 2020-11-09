@@ -17,7 +17,7 @@ namespace WebVL.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<Statt> Statts { get; set; }
         public DbSet<AdminAccount> AdminAccounts { get; set; }
-
+        public DbSet<OrdersDetails> ordersDetails { get; set; }
         public ProductContext() : base("ProductContext", throwIfV1Schema: false)
         {
         }
