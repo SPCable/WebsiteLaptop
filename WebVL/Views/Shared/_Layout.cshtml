@@ -44,15 +44,12 @@
                 </div>
                 <div class="col-xl-6 col-lg-5">
                     <form class="header-search-form">
-                        @using (Html.BeginForm("Result", "Search"))
-                        {
-                            @*<input type="text" placeholder="Tìm kiếm laptop">*@
-                            @Html.TextBox("searching")
-                            @*<button><i class="flaticon-search"></i></button>*@
-                            <button class="flaticon-search"><a style="color:white" href="@Url.Action("Result", "Search")"></a>  </button>
+                        @using (Html.BeginForm("Result", "Home", FormMethod.Get))
+                        {   
+                           @Html.TextBox("searching")
+                           <button class="flaticon-search" type="button" onclick="location.href='@Url.Action("Result","Search")'"> </button>
                         }
-
-                    </form>
+                  </form>
                 </div>
                 <div class="col-xl-4 col-lg-5">
                     <div class="user-panel">
@@ -82,10 +79,10 @@
         <div class="container">
             <!-- menu -->
             <ul class="main-menu">
-                <li><a href="#">Trang chủ</a></li>
+                <li><a href="@Url.Action("Trangchu","Home")">Trang chủ</a></li>
                 <!-- <span class="new">New</span> -->
                 <li>
-                    <a href="#">Laptop</a>
+                    <a href="@Url.Action("Index","Home")">Laptop</a>
                     <ul class="sub-menu">
                         <li><a href="#">MSI</a></li>
                         <li><a href="#">ASUS</a></li>
