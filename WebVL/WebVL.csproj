@@ -47,12 +47,18 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -403,6 +409,192 @@
     <Content Include="Content\slicknav.min.css" />
     <Content Include="Content\style.css" />
     <Content Include="Controllers\1602_amdfy17_herobanner-tab_391x885.jpg" />
+    <Content Include="img\banner-1400x739.jpg" />
+    <Content Include="img\banner-n04.jpg" />
+    <Content Include="img\banner.jpg" />
+    <Content Include="img\banner_5d44ee6f.png" />
+    <Content Include="img\c5795626fae7e88b9a9addc9fd68348b.jpg" />
+    <Content Include="img\dell-gaming-laptop.jpg" />
+    <Content Include="img\e0148b1086ba9877d95ba4cbfd4a796b.jpg" />
+    <Content Include="img\hq-official-banner-1920x550-landing-page-1-1.jpg" />
+    <Content Include="img\MSI_GPweb_banner_1920X550-800x229.jpg" />
+    <Content Include="img\PAVILLION_15 %281%29.jpg" />
+    <Content Include="img\PAVILLION_15.jpg" />
+    <Content Include="img\product\502269-dell-alienware-17-r5.jpg" />
+    <Content Include="img\product\acer-aspire-5-a515-54-wp-01-backlit.jpg" />
+    <Content Include="img\product\AcerAspire3A315-54__1_.jpg" />
+    <Content Include="img\product\alienware-15-r3-2017_jr6s.1024.jpg" />
+    <Content Include="img\product\aspire 7.jpg" />
+    <Content Include="img\product\AspireR7.jpg" />
+    <Content Include="img\product\blade pro.jpg" />
+    <Content Include="img\product\Bladestealth.jpg" />
+    <Content Include="img\product\Elite book 1040.jpg" />
+    <Content Include="img\product\elitebook820.jpg" />
+    <Content Include="img\product\Elitebook840.jpg" />
+    <Content Include="img\product\elitebook850.jpg" />
+    <Content Include="img\product\elitebookx360.jpg" />
+    <Content Include="img\product\ENVY.png" />
+    <Content Include="img\product\ENVYX360.jpg" />
+    <Content Include="img\product\Extensaex2540.jpg" />
+    <Content Include="img\product\F756UX.jpg" />
+    <Content Include="img\product\Flex5.jpg" />
+    <Content Include="img\product\FX502.jpg" />
+    <Content Include="img\product\FX503.jpg" />
+    <Content Include="img\product\FX553.jpg" />
+    <Content Include="img\product\FX753.jpeg" />
+    <Content Include="img\product\G701.png" />
+    <Content Include="img\product\g752.jpg" />
+    <Content Include="img\product\gE62.png" />
+    <Content Include="img\product\GE63.jpg" />
+    <Content Include="img\product\GE72.jpg" />
+    <Content Include="img\product\GE73.jpg" />
+    <Content Include="img\product\GL553.jpg" />
+    <Content Include="img\product\GL62.jpg" />
+    <Content Include="img\product\GL62M.jpg" />
+    <Content Include="img\product\GL72.jpg" />
+    <Content Include="img\product\GRAM.jpg" />
+    <Content Include="img\product\GS40.jpg" />
+    <Content Include="img\product\GS70.jpg" />
+    <Content Include="img\product\GT.png" />
+    <Content Include="img\product\GV.jpg" />
+    <Content Include="img\product\IDEADPAD320.jpg" />
+    <Content Include="img\product\IDEADPAD720.jpg" />
+    <Content Include="img\product\IDEADPADY700.jpg" />
+    <Content Include="img\product\IDEADPADY900.jpg" />
+    <Content Include="img\product\IDEAPAD.jpg" />
+    <Content Include="img\product\IDEAPAD510.jpg" />
+    <Content Include="img\product\INSPIRION5370.jpg" />
+    <Content Include="img\product\INSPIRON 7378.png" />
+    <Content Include="img\product\INSPIRON.jpg" />
+    <Content Include="img\product\INSPIRON7779.jpg" />
+    <Content Include="img\product\K556UR.jpg" />
+    <Content Include="img\product\K756UX.jpg" />
+    <Content Include="img\product\LAPTOPMSI.jpg" />
+    <Content Include="img\product\LATITUDE 3380.jpg" />
+    <Content Include="img\product\LATITUDE 5490.png" />
+    <Content Include="img\product\LATITUDE 7480.jpg" />
+    <Content Include="img\product\LATITUDE E5270.png" />
+    <Content Include="img\product\LATITUDE E7470.jpg" />
+    <Content Include="img\product\LEGION Y520.jpg" />
+    <Content Include="img\product\LEGION Y720.png" />
+    <Content Include="img\product\LEOPARD GP720M.jpg" />
+    <Content Include="img\product\LIFEBOOKA556.jpg" />
+    <Content Include="img\product\LIFEBOOKA557.jpg" />
+    <Content Include="img\product\MACBOOK AIR.jpg" />
+    <Content Include="img\product\MACBOOK X.jpg" />
+    <Content Include="img\product\MACBOOK12INCH.jpeg" />
+    <Content Include="img\product\MACBOOKPRO.jpg" />
+    <Content Include="img\product\MI NOTEBOOK.jpg" />
+    <Content Include="img\product\NITRO AN515.png" />
+    <Content Include="img\product\NITRO5.jpg" />
+    <Content Include="img\product\NOTEB PAV.jpg" />
+    <Content Include="img\product\NOTEBOOK 9.jpg" />
+    <Content Include="img\product\NOTEBOOK ODYSEY.jpg" />
+    <Content Include="img\product\OMEN 17.jpg" />
+    <Content Include="img\product\OMEN.jpg" />
+    <Content Include="img\product\OMEN15.jpg" />
+    <Content Include="img\product\PALION 14.jpg" />
+    <Content Include="img\product\PALION 15.jpg" />
+    <Content Include="img\product\PALION POWER.jpg" />
+    <Content Include="img\product\PAVILION X360.jpg" />
+    <Content Include="img\product\PIXELBOOK.jpg" />
+    <Content Include="img\product\PL60 7RD.jpg" />
+    <Content Include="img\product\PORTEGE X30.jpg" />
+    <Content Include="img\product\PORTEGEZ30.jpg" />
+    <Content Include="img\product\PRECISION 3510.png" />
+    <Content Include="img\product\PRECISION 5520.jpg" />
+    <Content Include="img\product\PRECISION 7720.png" />
+    <Content Include="img\product\PRECISION M5520.jpg" />
+    <Content Include="img\product\PREDATOR 17.jpg" />
+    <Content Include="img\product\PREDATOR G9.jpg" />
+    <Content Include="img\product\Pro P2540UA-AB51.jpg" />
+    <Content Include="img\product\Pro P2540UA-XO0198T.jpg" />
+    <Content Include="img\product\Pro P2540UA-XS51.jpg" />
+    <Content Include="img\product\Probook 430.jpg" />
+    <Content Include="img\product\Probook 640.jpg" />
+    <Content Include="img\product\Q304UA.jpg" />
+    <Content Include="img\product\Q524UQ.jpg" />
+    <Content Include="img\product\Q534UX.jpg" />
+    <Content Include="img\product\R558UA-.jpg" />
+    <Content Include="img\product\ROG G701VI.jpg" />
+    <Content Include="img\product\Rog G701VIK-BA060T.jpg" />
+    <Content Include="img\product\ROG G701VO.jpg" />
+    <Content Include="img\product\ROG G703VI-E5062T.jpg" />
+    <Content Include="img\product\Rog G752VL-GC088D.jpg" />
+    <Content Include="img\product\Rog G752VS-BA171T.jpg" />
+    <Content Include="img\product\Rog GL502VM-DS74.png" />
+    <Content Include="img\product\Rog GL553VE-DS74.jpg" />
+    <Content Include="img\product\Rog GL702VM-GC017T.jpg" />
+    <Content Include="img\product\Rog GL702VM-GC017T.png" />
+    <Content Include="img\product\Rog GL753VE-DS74.jpg" />
+    <Content Include="img\product\ROG Strix.jpg" />
+    <Content Include="img\product\ROG Zephyrus.jpg" />
+    <Content Include="img\product\Satellite Pro.jpg" />
+    <Content Include="img\product\SP315-51.jpg" />
+    <Content Include="img\product\SP714-51.jpg" />
+    <Content Include="img\product\Spectre 13-V100nv.jpg" />
+    <Content Include="img\product\Spectre 13-V111dx.jpg" />
+    <Content Include="img\product\Spectre Pro.png" />
+    <Content Include="img\product\Spectre x360.jpg" />
+    <Content Include="img\product\SPIN3.jpg" />
+    <Content Include="img\product\SPIN5.jpg" />
+    <Content Include="img\product\Surface Laptop.jpg" />
+    <Content Include="img\product\Swift 3.jpg" />
+    <Content Include="img\product\Swift 7.png" />
+    <Content Include="img\product\Tecra A40-C-1DF.jpg" />
+    <Content Include="img\product\Tecra X40-D-10Z.jpg" />
+    <Content Include="img\product\Tecra Z40-C-136.jpg" />
+    <Content Include="img\product\Tecra Z50-C-144.jpg" />
+    <Content Include="img\product\ThinkPad 13.jpg" />
+    <Content Include="img\product\ThinkPad E470.png" />
+    <Content Include="img\product\ThinkPad L470.jpg" />
+    <Content Include="img\product\ThinkPad P40.jpg" />
+    <Content Include="img\product\ThinkPad T460.jpg" />
+    <Content Include="img\product\ThinkPad Yoga.jpg" />
+    <Content Include="img\product\TMX349-G2-M-50FS.jpg" />
+    <Content Include="img\product\TP501UA-CJ131T.jpg" />
+    <Content Include="img\product\TravelMate P238-M.jpg" />
+    <Content Include="img\product\TravelMate P259-G2.jpg" />
+    <Content Include="img\product\UX410UA-GV097T.jpg" />
+    <Content Include="img\product\UX510UX-CN269T.jpg" />
+    <Content Include="img\product\V110-15IKB.jpg" />
+    <Content Include="img\product\V310-15IKB.jpg" />
+    <Content Include="img\product\V320-17ISK.jpg" />
+    <Content Include="img\product\V330-15IKB.jpg" />
+    <Content Include="img\product\VivoBook Max.jpg" />
+    <Content Include="img\product\VivoBook Pro.jpg" />
+    <Content Include="img\product\VivoBook S14.jpg" />
+    <Content Include="img\product\VivoBook S15.jpg" />
+    <Content Include="img\product\Vivobook X541UV-DM1217T.jpg" />
+    <Content Include="img\product\Vostro 3559.jpg" />
+    <Content Include="img\product\Vostro 5370.jpg" />
+    <Content Include="img\product\X540UA-DM186.jpg" />
+    <Content Include="img\product\X541UV-DM1439T.jpg" />
+    <Content Include="img\product\X542UQ-DM117.jpg" />
+    <Content Include="img\product\X550VX-XX015D.png" />
+    <Content Include="img\product\X556UJ-XO044T.jpg" />
+    <Content Include="img\product\X705UV-BX074T.jpg" />
+    <Content Include="img\product\XPS 13.jpg" />
+    <Content Include="img\product\XPS 15.jpg" />
+    <Content Include="img\product\Yoga 500-14IBD.jpg" />
+    <Content Include="img\product\Yoga 510-15IKB.png" />
+    <Content Include="img\product\Yoga 720-13IKB.jpg" />
+    <Content Include="img\product\Yoga 900-13ISK.jpg" />
+    <Content Include="img\product\Zbook 15.jpg" />
+    <Content Include="img\product\Zbook 15u.jpg" />
+    <Content Include="img\product\ZBook 17.jpg" />
+    <Content Include="img\product\ZBook Studio.jpg" />
+    <Content Include="img\product\Zenbook 3.jpg" />
+    <Content Include="img\product\ZenBook Flip.png" />
+    <Content Include="img\product\ZenBook Pro.jpg" />
+    <Content Include="img\product\ZenBook UX310UA-FB485T.jpg" />
+    <Content Include="img\product\Zenbook UX330UA-AH5Q.jpg" />
+    <Content Include="img\product\Zenbook UX390UA.jpg" />
+    <Content Include="img\product\ZenBook UX430UA.jpg" />
+    <Content Include="img\product\ZenBook UX430UN.jpg" />
+    <Content Include="img\product\Zenbook UX510UW-FI095T.jpg" />
+    <Content Include="img\unnamed.jpg" />
+    <Content Include="img\xmg p505 banner.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\Flaticon.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -1116,6 +1308,9 @@
     <EmbeddedResource Include="Migrations\202011051431267_aaa.resx">
       <DependentUpon>202011051431267_aaa.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
