@@ -1,209 +1,179 @@
-﻿@model IEnumerable<WebVL.Models.Product>
-<DOCTYPE html>
-    <html lang="zxx">
-    <head>
-        <title>VinLaptop - Mua bán Laptop</title>
-        <meta charset="UTF-8">
-        <meta name="description" content="VinLaptop">
-        <meta name="keywords" content="divisima, eCommerce, creative, html">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Favicon -->
-        <link href="~/img/favicon.png" rel="shortcut icon" />
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>VinLaptop - Mua bán Laptop</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="VinLaptop">
+    <meta name="keywords" content="divisima, eCommerce, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="~/img/favicon.png" rel="shortcut icon" />
 
-        <!-- Google Font -->
-        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
-
-
-        <!-- Stylesheets -->
-        <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
-        <link rel="stylesheet" href="~/Content/flaticon.css" />
-        <link rel="stylesheet" href="~/Content/slicknav.min.css" />
-        <link rel="stylesheet" href="~/Content/jquery-ui.min.css" />
-        <link rel="stylesheet" href="~/Content/owl.carousel.min.css" />
-        <link rel="stylesheet" href="~/Content/animate.css" />
-        <link rel="stylesheet" href="~/Content/style.css" />
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
 
-        <!--[if lt IE 9]>
-              <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-    </head>
-
-
-    <header class="header-section">
-        <div class="header-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2 text-center text-lg-left">
-                        <!-- logo -->
-                        <a href="Home" class="site-logo">
-                            <img src="~/img/logo.png" alt="">
-                        </a>
-                    </div>
-                    <div class="col-xl-6 col-lg-5">
-                        <form class="header-search-form">
-                            <input type="text" id="Search" placeholder="Tìm kiếm laptop">
-                            <button><i class="flaticon-search"></i></button>
-                               <br />
-                            <br />
-                        </form>
-
-                    </div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="user-panel">
-                            <div class="up-item">
-                                <i class="flaticon-profile"></i>
-                                @if (Request.IsAuthenticated)
-                                {
-                                    <a> @Html.Partial("_LoginPartial")</a>
-                                }
-                                else
-                                {
-                                    <a>@Html.ActionLink("Đăng nhập", "Login", "Account")</a>
-                                }
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/flaticon.css" />
+    <link rel="stylesheet" href="~/Content/slicknav.min.css" />
+    <link rel="stylesheet" href="~/Content/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/Content/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/Content/animate.css" />
+    <link rel="stylesheet" href="~/Content/style.css" />
 
 
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-                            </div>
-                            <div class="up-item">
+</head>
+
+
+<header class="header-section">
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 text-center text-lg-left">
+                    <!-- logo -->
+                    <a href="@Url.Action("Trangchu","Home")" class="site-logo">
+                        <img style="margin-top:22px" src="~/img/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="col-xl-6 col-lg-5">
+                    <form class="header-search-form">
+                        <img src="~/img/unknown.png" />
+                    </form>
+                </div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="user-panel">
+                        <div class="up-item">
+                            <i class="flaticon-profile"></i>
+                            @if (Request.IsAuthenticated)
+                            {
+                                <a> @Html.Partial("_LoginPartial")</a>
+                            }
+                            else
+                            {
+                                <a>@Html.ActionLink("Đăng nhập", "Login", "Account")</a>
+
+                            }
+                        </div>
+                        <div class="up-item">
+                            <div class="shopping-card">
                                 @Html.Action("ShoppingCartPartial", "Shopping")
                             </div>
                         </div>
+                        @using (Html.BeginForm("Result", "Home", FormMethod.Get))
+                        {
+                            <input class="flaticon-search" value="Tìm kiếm" style="margin-top:22px; color:black" type="button" onclick="location.href='@Url.Action("Result","Home")'"> </input>
+                        }
                     </div>
                 </div>
             </div>
         </div>
-        <nav class="main-navbar">
-            <div class="container">
-                <!-- menu -->
-                <ul class="main-menu">
-                    <li>@Html.ActionLink("Trang chủ", "")</li>
-                    <!-- <span class="new">New</span> -->
-                    <li>
-                        <a href="#">Laptop</a>
-                        <ul class="sub-menu">
-                            <li><a href="#">MSI</a></li>
-                            <li><a href="#">ASUS</a></li>
-                            <li><a href="#">ACER</a></li>
-                            <li><a href="#">DELL</a></li>
-                            <li><a href="#">MACBOOK</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Đăng bài</a></li>
-                    <li><a href="#">Liên hệ</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <body>
-        <div id="preloder">
-            <div class="loader"></div>
-        </div>
-        <div class="category-section spad">
-            @RenderBody()
-        </div>
-    </body>
-
-    <section class="footer-section">
+    </div>
+    <nav class="main-navbar">
         <div class="container">
-            <div class="footer-logo text-center">
-                <a href="index.html"><img src="~/img/logo-light.png" alt=""></a>
+            <!-- menu -->
+            <ul class="main-menu">
+                <li><a href="@Url.Action("Trangchu","Home")">Trang chủ</a></li>
+                <!-- <span class="new">New</span> -->
+                <li>
+                    <a href="@Url.Action("Index","Home")">Laptop</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">MSI</a></li>
+                        <li><a href="#">ASUS</a></li>
+                        <li><a href="#">ACER</a></li>
+                        <li><a href="#">DELL</a></li>
+                        <li><a href="#">MACBOOK</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Đăng bài</a></li>
+                <li><a href="@Url.Action("Contact","Home")">Liên hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<body>
+    <div class="category-section spad">
+        @RenderBody()
+    </div>
+</body>
+
+<section class="footer-section">
+    <div class="container">
+        <div class="footer-logo text-center">
+            <a href="index.html"><img src="~/img/logo-light.png" alt=""></a>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="footer-widget about-widget">
+                    <h2>Về chúng tôi</h2>
+                    <p>chém gió</p>
+                    <img src="~/img/cards.png" alt="">
+                </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget about-widget">
-                        <h2>Về chúng tôi</h2>
-                        <p>chém gió</p>
-                        <img src="~/img/cards.png" alt="">
-                    </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="footer-widget about-widget">
+                    <h2>Chính sách</h2>
+                    <ul>
+                        <li><a href=""> Chính sách thanh toán</a></li>
+                        <li><a href=""> Hướng dẫn đặt hàng và giao hàng</a></li>
+                        <li><a href=""> Chính sách đổi trả hàng</a></li>
+                        <li><a href=""> Chính sách bảo mật thông tin</a></li>
+                    </ul>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget about-widget">
-                        <h2>Chính sách</h2>
-                        <ul>
-                            <li><a href=""> Chính sách thanh toán</a></li>
-                            <li><a href=""> Hướng dẫn đặt hàng và giao hàng</a></li>
-                            <li><a href=""> Chính sách đổi trả hàng</a></li>
-                            <li><a href=""> Chính sách bảo mật thông tin</a></li>
-                        </ul>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="footer-widget contact-widget">
+                    <h2>Liên hệ</h2>
+                    <div class="con-info">
+                        <span>C.</span>
+                        <p>VinLaptop.Ltd </p>
                     </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="footer-widget contact-widget">
-                        <h2>Liên hệ</h2>
-                        <div class="con-info">
-                            <span>C.</span>
-                            <p>VinLaptop.Ltd </p>
-                        </div>
-                        <div class="con-info">
-                            <span>B.</span>
-                            <p>475A Dien Bien Phu</p>
-                        </div>
-                        <div class="con-info">
-                            <span>T.</span>
-                            <p>+53 345 7953 32453</p>
-                        </div>
-                        <div class="con-info">
-                            <span>E.</span>
-                            <p>office@youremail.com</p>
-                        </div>
+                    <div class="con-info">
+                        <span>B.</span>
+                        <p>475A Dien Bien Phu</p>
+                    </div>
+                    <div class="con-info">
+                        <span>T.</span>
+                        <p>+53 345 7953 32453</p>
+                    </div>
+                    <div class="con-info">
+                        <span>E.</span>
+                        <p>office@youremail.com</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="social-links-warp">
-            <div class="container">
-                <div class="social-links">
-                    <a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
-                    <a href="" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
-                    <a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
-                    <a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
-                    <a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
-                    <a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
-                    <a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
-                </div>
-
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                <p class="text-white text-center mt-5">
-                    Copyright &copy;
-                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                </p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
+    </div>
+    <div class="social-links-warp">
+        <div class="container">
+            <div class="social-links">
+                <a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+                <a href="" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
+                <a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+                <a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+                <a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+                <a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+                <a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
             </div>
-        </div>
-    </section>
 
-    <!--====== Javascripts & Jquery ======-->
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</html>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+        </div>
+    </div>
+</section>
+
+<!--====== Javascripts & Jquery ======-->
 
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
-<script>
-    $(document).ready(function () {
-        function Contains(text_one, text_two) {
-            if (text_one.indxOf(text_two) != -1)
-                return true;
-        }
-        $("#Search").keyup(function () {
-            var searchText = $("#Search").val().toLowerCase();
-            $(".Search").each(function () {
-                if (!Contains($(this).text().toLowerCase(), searchText)) {
-                    $(this).hide();
-                }
-                else {
-                    $(this).show();
-                }
-            });
-        });
-    });
-</script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/jquery.slicknav.min.js"></script>
 <script src="~/Scripts/owl.carousel.min.js"></script>
@@ -211,3 +181,9 @@
 <script src="~/Scripts/jquery.zoom.min.js"></script>
 <script src="~/Scripts/jquery-ui.min.js"></script>
 <script src="~/Scripts/main.js"></script>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+</html>

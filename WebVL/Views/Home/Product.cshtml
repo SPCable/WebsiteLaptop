@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-lg-6 product-details">
                     <h2 class="p-title">@Model.SingleOrDefault().productName</h2>
-                    <h3 class="p-price">@Model.Single().productPrice</h3>
+                    <h3 class="p-price">@String.Format("{0:0,0 vnđ}",Model.Single().productPrice)</h3>
                     @if (Model.Single().productAmount == 0)
                     {
                         <h4 class="p-stock">Tình trạng: <span>Hết hàng</span></h4>
@@ -58,14 +58,6 @@
                     }
                     <i class="fa fa-star-o fa-fade"></i>
                 </div>
-                    <div class="p-review">
-                        <a href="">3 nhận xét</a>|<a href="">Thêm nhận xét</a>
-                    </div>
-
-                    <div class="quantity">
-                        <p>Số lượng</p>
-                        <div class="pro-qty"><input type="text" value="1"></div>
-                    </div>
                     <a href="@Url.Action("AddShoppingCart", "Shopping", new { @Idpro = Model.Single().ProductId, Url = Request.Url.ToString()})" class="site-btn">MUA NGAY</a>
                     <div id="accordion" class="accordion-area">
                         <div class="panel">
@@ -148,14 +140,17 @@
                                 </div>
                             </div>
                             <div class="pi-text">
-                                <h6>@item.productPrice</h6>
+                                <h6>@String.Format("{0:0,0 vnđ}", item.productPrice)</h6>
                                 <p>@item.productName </p>
                             </div>
                         </div>
                     }
-
                 }
             </div>
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=343581486863420&autoLogAppEvents=1" nonce="2YQSCeuh"></script>
+
+            <div class="fb-comments" data-href="https://localhost:44344/Home/Product/1079" data-numposts="20" data-width=""></div>
         </div>
     </section>
     <script src="js/jquery-3.2.1.min.js"></script>

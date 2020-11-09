@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -250,6 +251,20 @@ namespace WebVL.Controllers
             return View(model);
         }
 
+        public ActionResult History(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var order = db.Orders.Where(n => n.IdCus == id).ToList();
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
+
         // GET: ApplicationUsers/Edit/5
         public ActionResult Edit(string id)
         {
@@ -272,6 +287,10 @@ namespace WebVL.Controllers
         {
             if (ModelState.IsValid)
             {
+                LoginViewModel model = new LoginViewModel();
+                var kh = db.Users.SingleOrDefault(n => n.Email == model.Email);
+                Session["Taikhoan"] = null;
+                Session["Taikhoan"] = kh;
                 db.Entry(applicationUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

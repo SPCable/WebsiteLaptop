@@ -9,8 +9,13 @@ namespace WebVL.Controllers
 {
     public class SearchController : Controller
     {
-        ProductContext context = new ProductContext();
-            
+        ProductContext productContext = new ProductContext();
+
+        public ActionResult Result(string searching)
+        {
+            var a = productContext.Products.Where(x => x.productName.Contains(searching) || searching == null).ToList();
+            return View(a);
+        }
 
     }
 }
