@@ -114,11 +114,10 @@ D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\bin\PagedList.dll
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\bin\PagedList.Mvc.dll
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\bin\PagedList.xml
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\bin\PagedList.Mvc.xml
+D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.csprojAssemblyReference.cache
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.Migrations.userrrr.resources
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.csproj.GenerateResource.cache
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.csproj.CoreCompileInputs.cache
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.csproj.CopyComplete
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.dll
 D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.pdb
-D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.Migrations.aaa.resources
-D:\Data\TaiLieuWeb\DoAnWeb\Doanweb\WebsiteLaptop\WebVL\obj\Debug\WebVL.csprojAssemblyReference.cache
