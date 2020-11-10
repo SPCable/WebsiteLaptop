@@ -59,8 +59,7 @@
                                 @Html.DisplayFor(modelItem => item.CategoryName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.CategoryImg)
-                                <img width="80" height="50" src="~/img/@item.CategoryImg" />
+                                <img width="80" height="70" src="~/img/brand_Img/@item.CategoryImg"/>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.BrandId)
@@ -97,7 +96,7 @@
                 </div>
             </div>
 
-            <a href="https://localhost:44344/AdHome/CreateCate" class="btn btn-primary" type="submit"> Thêm </a>
+            <a href="@Url.Action("CreateCate","AdHome")" class="btn btn-primary" type="submit"> Thêm </a>
 
         </form>
 

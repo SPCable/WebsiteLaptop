@@ -56,8 +56,8 @@ namespace WebVL
             //   consumerSecret: "");
 
             //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            //   appId: "343581486863420",
+            //   appSecret: "a2767be9418c99a7a00a50f719d0ecd2");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

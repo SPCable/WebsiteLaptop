@@ -2,13 +2,31 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="login_part section_padding ">
+<head>
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/flaticon.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/slicknav.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/animate.min.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/slick.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/nice-select.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/style.css">
+</head>
+
+
+<section class="login_part">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 col-md-6">
-                <div class="login_part_text text-center">
+                <div style="width:600px" class="login_part_text text-center">
                     <div class="login_part_text_iner">
                         <h2>Bạn chưa có tài khoản?</h2>
                         <br />
@@ -20,35 +38,34 @@
                 <div class="login_part_form">
                     <div class="login_part_form_iner">
                         <h3>
-                            Welcome Back ! <br>
-                            Please Sign in now
+                            Chào Mừng Bạn Đã Trở Lại<br>
+                            Vui lòng Đăng nhập để tiếp tục
                         </h3>
                         <br />
                         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                         {
                             @Html.AntiForgeryToken()
                             <form class="row contact_form" action="#" method="post" novalidate="novalidate">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.ValidationSummary(true, "Tài khoản không hợp lệ", new { @class = "text-danger" })
                                 <div class="col-md-12 form-group p_star">
-                                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                                    @Html.LabelFor(m => m.Email,"Tài khoản Email", new { @class = "col-md-10 control-label" })
                                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    
                                 </div>
 
-                                <div class="col-md-12 form-group p_star">
-                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                <div class="col-md-12 form-group">
+                                    @Html.LabelFor(m => m.Password,"Mật khẩu", new { @class = "col-md-10 control-label" })
                                     @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account d-flex align-items-center">
                                         @Html.CheckBoxFor(m => m.RememberMe)
-                                        @Html.LabelFor(m => m.RememberMe)
+                                        Nhớ đăng nhập!
                                     </div>
                                     <button type="submit" value="submit" class="btn_3">
-                                        log in
+                                        Đăng nhập
                                     </button>
-                                    <a class="lost_pass" href="#">forget password?</a>
+                                    <a class="lost_pass" href="#">Quên mật khẩu?</a>
                                 </div>
 
                             </form>
@@ -62,6 +79,44 @@
     </div>
 </section>
 
-@section Scripts {
+
+
+
+
+<script src="~/LayoutSourceLogin/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="~/LayoutSourceLogin/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/popper.min.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="~/LayoutSourceLogin/assets/js/jquery.slicknav.min.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="~/LayoutSourceLogin/assets/js/owl.carousel.min.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/slick.min.js"></script>
+
+<!-- One Page, Animated-HeadLin -->
+<script src="~/LayoutSourceLogin/assets/js/wow.min.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/animated.headline.js"></script>
+
+<!-- Scroll up, nice-select, sticky -->
+<script src="~/LayoutSourceLogin/assets/js/jquery.scrollUp.min.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/jquery.nice-select.min.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/jquery.sticky.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/jquery.magnific-popup.js"></script>
+
+<!-- contact js -->
+<script src="~/LayoutSourceLogin/assets/js/contact.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/jquery.form.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/jquery.validate.min.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/mail-script.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="~/LayoutSourceLogin/assets/js/plugins.js"></script>
+<script src="~/LayoutSourceLogin/assets/js/main.js"></script>
+
+
+@*@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@

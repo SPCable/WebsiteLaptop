@@ -158,7 +158,7 @@
         <div class="form-group">
             <div class="col-md-offset-10 col-md-2">
                 <input type="button" class="btn btn-primary" value="Edit" onclick="location.href='@Url.Action("Edit", "ApplicationUsers", new { id = Model.Id })'" />
-                <a class="btn btn-danger pull-right" style="color:white" href="https://localhost:44344/ApplicationUsers/Index">Back</a>
+                <a class="btn btn-danger pull-right" style="color:white" href="@Url.Action("Index","ApplicationUsers")">Back</a>
             </div>
             <div class="col-md-offset-5 col-md-2">
 
