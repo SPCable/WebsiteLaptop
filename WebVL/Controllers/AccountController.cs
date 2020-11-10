@@ -165,7 +165,7 @@ namespace WebVL.Controllers
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                  
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Trangchu", "Home");
                 }
                 AddErrors(result);
             }
@@ -358,7 +358,7 @@ namespace WebVL.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Manage");
+                return RedirectToAction("Trangchu", "Manage");
             }
 
             if (ModelState.IsValid)
@@ -394,7 +394,7 @@ namespace WebVL.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Trangchu", "Home");
         }
 
         //
@@ -451,7 +451,7 @@ namespace WebVL.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Trangchu", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<link href="~/Admin/main.css" rel="stylesheet">
 <div class="page-top-info">
     <div class="container">
         <h4>Giỏ hàng</h4>
         <div class="site-pagination">
-            <a href= @Url.Action("Index","Home")>Home</a> /
+            <a href= @Url.Action("Laptop","Home")>Home</a> /
             <a href="">Giỏ hàng</a>
         </div>
     </div>
@@ -53,7 +53,7 @@
                                             </div>
                                         </td>
                                         <td class="size-col"><h4>@String.Format("{0:0,0 vnđ}", item.Total)</h4></td>
-                                        <td> <input type="submit" value="Cập nhật"/> </td>
+                                        <td> <input class=" btn btn-success" type="submit" value="Cập nhật"/> </td>
                                     }
 
                                 </tr>

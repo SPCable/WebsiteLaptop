@@ -7,7 +7,6 @@
 }
 
 
-
 <div class="page-top-info">
     <div class="container">
         <h4>Giỏ hàng</h4>
@@ -23,25 +22,27 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 order-2 order-lg-1">
-                <form class="checkout-form">
-                    <div class="cf-title">Thông tin người nhận</div>
-                    <div class="row address-inputs">
-                        <div class="col-md-12">
-                            <input type="text" placeholder="Họ và tên" value="@kh.Name" />
+                <form class="checkout-form" action="Payment" method="post">
+                    <div class="cf-title">Thông tin người nhận</div>    
+                    <h5 style="color:red">@TempData["Thongbao"]</h5>
+                    <br />
+                        <div class="row address-inputs">
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Họ và tên (*)" value="@kh.Name" name="Name" />
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Địa chỉ (*)" value="@kh.Address" name="Address" />
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" placeholder="Email (*)" value="@kh.Email" name="Email" />
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Zipcode (*)" value="@kh.Postcode" name="Zipcode" />
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Phone no. (*)" value="@kh.PhoneNumber" name="Phone" />
+                            </div>
                         </div>
-                        <div class="col-md-12">
-                            <input type="text" placeholder="Địa chỉ" value="@kh.Address">
-                        </div>
-                        <div class="col-md-12">
-                            <input type="text" placeholder="Email" value="@kh.Email">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" placeholder="Zipcode" value="@kh.Postcode">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" placeholder="Phone no." value="@kh.PhoneNumber">
-                        </div>
-                    </div>
                     <div class="cf-title">Phương thức giao hàng</div>
                     <div class="row shipping-btns">
                         <div class="col-6">
@@ -67,11 +68,15 @@
                         <ul class="payment-list">
 
                             <li>
-                                Paypal <a href="@Url.Action("PaymentWithPaypal","Paypal")"><img src="~/img/paypal.png" /></a>
+                                Paypal <a href="@Url.Action("PaymentWithPaypal","Paypal")"><img style="height:50px;" src="~/img/paypal.png" /></a>
                             </li>
-                            <li>
-                                Momo <a href="@Url.Action("PayMomo","Shopping")"></a>
-                            </li>
+                            @if (ViewBag.Total <= 20000000)
+                            {
+
+                                <li>
+                                    Momo <a href="@Url.Action("PayMomo", "Shopping")"><img style="height:80px" src="~/img/mm.png" /></a>
+                                </li>
+                            }
                             <li>
                                 <div class="cf-radio-btns">
                                     <div class="cfr-item">
@@ -82,9 +87,7 @@
                             </li>
                         </ul>
                     </div>
-
-                    @*<button class="site-btn submit-order-btn"> @Html.ActionLink("Xác nhận đơn hàng", "Payment")  </button>*@
-                <button class="site-btn submit-order-btn"> <a style="color:white" href="@Url.Action("Payment", "Shopping")">Xác nhận mua ngay </a>  </button> 
+                    <button class="site-btn submit-order-btn"> <a style="color:white" href="@Url.Action("Payment", "Shopping")">Xác nhận mua ngay </a>  </button>
                 </form>
             </div>
             <div class="col-lg-4 order-1 order-lg-2">
