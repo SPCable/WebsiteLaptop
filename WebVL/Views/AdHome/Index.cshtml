@@ -74,9 +74,9 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
+                            <th>
                                 @Html.DisplayFor(modelItem => item.productName)
-                            </td>
+                            </th>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Cpu)
                             </td>
@@ -95,13 +95,13 @@
                                     
                             <td style="max-width: 200px">
                                     
-                                @if(item.productDesc.Length == null)
+                                @if(item.productDesc.Length == 0)
                                 {
                                     item.productDesc = " ";
                                 }
                                 @if (item.productDesc.Length > 100)
                                 {
-                                    @Html.Raw(item.productDesc.Substring(0, 100) + " ...");
+                                    @Html.Raw(item.productDesc.Substring(0, 50) + " ...");
                                 }
                                 else
                                 {
@@ -113,8 +113,17 @@
                                         
                             </td>
                             <td>
-                                @{ 
-                                    var a = db.Categories.Where(n => n.categoryId == item.CategoryId).Single().CategoryName;
+                                @{
+                                    
+                                    string a;
+                                    if (db.Categories.FirstOrDefault(n => n.categoryId == item.CategoryId) != null)
+                                    {
+                                        a = db.Categories.Where(n => n.categoryId == item.CategoryId).Single().CategoryName;
+                                    }
+                                    else
+                                    {
+                                        a = "Brand này không tồn tại";
+                                    }
                                 }
                                 @Html.DisplayFor(modelItem => a)
                             </td>
@@ -150,7 +159,7 @@
                 </div>
             </div>
 
-            <a href="https://localhost:44344/AdHome/CreateSP" class="btn btn-primary" type="submit"> Thêm </a>
+            <a href="@Url.Action("CreateSP","AdHome")" class="btn btn-primary" type="submit"> Thêm </a>
 
         </form>
 

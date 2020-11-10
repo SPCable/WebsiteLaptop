@@ -134,6 +134,7 @@ namespace WebVL.Admin.Controllers
                 {
                     db.Entry(applicationUser).State = EntityState.Modified;
                     await db.SaveChangesAsync();
+                    TempData["EditUser"] = "Sửa Thông Tin Khách Hàng Thành Công";
                     return RedirectToAction("Index");
                 }
                 return View(applicationUser);
@@ -169,6 +170,7 @@ namespace WebVL.Admin.Controllers
                 ApplicationUser applicationUser = await db.Users.SingleOrDefaultAsync(i => i.Id == id);
                 db.Users.Remove(applicationUser);
                 await db.SaveChangesAsync();
+                TempData["DeleteUser"] = "Xóa Thông Tin Khách Hàng Thành Công";
                 return RedirectToAction("Index");
             }
         }

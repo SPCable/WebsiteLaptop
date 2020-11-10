@@ -332,161 +332,6 @@ namespace WebVL.Admin.Ad.Controllers
                 }
 
 
-                {
-                    ////////////////////////////////////
-
-
-                    //if (fileUpload0 != null && fileUpload1 != null && fileUpload2 != null && fileUpload3 != null)
-                    //{
-                    //    if (ModelState.IsValid)
-                    //    {
-                    //        var fileName0 = Path.GetFileName(fileUpload0.FileName);
-                    //        product.productImg = fileName0;
-
-                    //        var fileName1 = Path.GetFileName(fileUpload1.FileName);
-                    //        product.productImg1 = fileName1;
-
-                    //        var fileName2 = Path.GetFileName(fileUpload2.FileName);
-                    //        product.productImg2 = fileName2;
-
-                    //        var fileName3 = Path.GetFileName(fileUpload3.FileName);
-                    //        product.productImg3 = fileName3;
-
-                    //    }
-                    //    db.Entry(product).State = EntityState.Modified;
-                    //    if (db.SaveChanges() > 0)
-                    //    {
-                    //        TempData["msg"] = "Cập nhật dữ liệu thành công";
-                    //        return RedirectToAction("Index");
-                    //    }
-                    //}
-                    //else
-                    //{
-
-
-                    //    //if (db.SaveChanges() > 0)
-                    //    //{
-                    //    //    TempData["msg"] = "Cập nhật dữ liệu thành công";
-                    //    //    return RedirectToAction("Index");
-                    //    //}
-
-                    //    if (fileUpload0 != null && fileUpload1 != null && fileUpload2 != null)
-                    //    {
-                    //        if (ModelState.IsValid)
-                    //        {
-                    //            var fileName0 = Path.GetFileName(fileUpload0.FileName);
-                    //            var fileName1 = Path.GetFileName(fileUpload1.FileName);
-                    //            var fileName2 = Path.GetFileName(fileUpload2.FileName);
-
-                    //            product.productImg = fileName0;
-                    //            product.productImg1 = fileName1;
-                    //            product.productImg2 = fileName2;
-
-                    //        }
-                    //        db.Entry(product).State = EntityState.Modified;
-                    //        if (db.SaveChanges() > 0)
-                    //        {
-                    //            TempData["msg"] = "Cập nhật dữ liệu thành công";
-                    //            return RedirectToAction("Index");
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        //product.productImg = Session["imgPath0"].ToString();
-                    //        //product.productImg1 = Session["imgPath1"].ToString();
-                    //        //product.productImg2 = Session["imgPath2"].ToString();
-
-                    //        //if (db.SaveChanges() > 0)
-                    //        //{
-                    //        //    TempData["msg"] = "Cập nhật dữ liệu thành công";
-                    //        //    return RedirectToAction("Index");
-                    //        //}
-
-                    //        if (fileUpload0 != null && fileUpload1 != null)
-                    //        {
-                    //            if (ModelState.IsValid)
-                    //            {
-                    //                var fileName0 = Path.GetFileName(fileUpload0.FileName);
-                    //                var fileName1 = Path.GetFileName(fileUpload1.FileName);
-
-                    //                product.productImg = fileName0;
-                    //                product.productImg1 = fileName1;
-                    //            }
-                    //            db.Entry(product).State = EntityState.Modified;
-                    //            if (db.SaveChanges() > 0)
-                    //            {
-                    //                TempData["msg"] = "Cập nhật dữ liệu thành công";
-                    //                return RedirectToAction("Index");
-                    //            }
-                    //        }
-                    //        else
-                    //        {
-                    //            //product.productImg = Session["imgPath0"].ToString();
-                    //            //product.productImg1 = Session["imgPath1"].ToString();
-
-                    //            //db.Entry(product).State = EntityState.Modified;
-
-                    //            //if (db.SaveChanges() > 0)
-                    //            //{
-                    //            //    TempData["msg"] = "Cập nhật dữ liệu thành công";
-                    //            //    return RedirectToAction("Index");
-                    //            //}
-
-                    //            if (fileUpload0 != null)
-                    //            {
-                    //                if (ModelState.IsValid)
-                    //                {
-                    //                    var fileName0 = Path.GetFileName(fileUpload0.FileName);
-
-                    //                    product.productImg = fileName0;
-                    //                }
-                    //                {
-                    //                    //var path = Path.Combine(Server.MapPath("~/img/product/"), fileName0);
-
-                    //                    //if (System.IO.File.Exists(path))
-                    //                    //{
-                    //                    //    ViewBag.ThongBao = "Hình ảnh đã tồn tại";
-                    //                    //}
-                    //                    //else
-                    //                    //{
-                    //                    //    fileUpload0.SaveAs(path);
-                    //                    //}
-                    //                }
-
-                    //                db.Entry(product).State = EntityState.Modified;
-                    //                if (db.SaveChanges() > 0)
-                    //                {
-                    //                    TempData["msg"] = "Cập nhật dữ liệu thành công";
-                    //                    return RedirectToAction("Index");
-                    //                }
-                    //            }
-                    //            else
-                    //            {
-                    //                if(fileUpload0 == null)
-                    //                {
-                    //                    product.productImg = Session["imgPath0"].ToString();
-                    //                    db.Entry(product).State = EntityState.Modified;
-
-                    //                    if (db.SaveChanges() > 0)
-                    //                    {
-                    //                        TempData["msg"] = "Cập nhật dữ liệu thành công";
-                    //                        return RedirectToAction("Index");
-                    //                    }
-                    //                }
-                    //                else
-                    //                {
-                    //                    if()
-                    //                    {
-
-                    //                    }
-                    //                }
-
-                    //            }
-                    //        }
-                    //    }
-                    //}
-                }
-
                 return View();
             }
         }
@@ -555,38 +400,38 @@ namespace WebVL.Admin.Ad.Controllers
             }
             else
             {
-                var checkIDCate = db.Categories.Where(a => a.categoryId == category.categoryId).SingleOrDefault();
-                if (checkIDCate != null)
-                {
-                    ViewBag.checkIDCate = "Trùng ID, xin nhập ID khác!";
-                    return View();
-                }
-
-                if (category.categoryId == null)
-                {
-                    ViewBag.categoryId = "phải nhập thông tin này";
-                    return View();
-                }
-
-                if (category.CategoryName == null)
-                {
-                    ViewBag.CategoryName = "phải nhập thông tin này";
-                    return View();
-                }
-                if (category.BrandId == null)
-                {
-                    ViewBag.BrandId = "phải nhập thông tin này";
-                    return View();
-                }
-
-                if (category.BrandName == null)
-                {
-                    ViewBag.BrandName = "phải nhập thông tin này";
-                    return View();
-                }
-
                 if (ModelState.IsValid)
                 {
+                    var checkIDCate = db.Categories.Where(a => a.categoryId == category.categoryId).SingleOrDefault();
+                    if (checkIDCate != null)
+                    {
+                        ViewBag.checkIDCate = "Trùng ID, xin nhập ID khác!";
+                        return View();
+                    }
+
+                    if (category.categoryId == null)
+                    {
+                        ViewBag.categoryId = "phải nhập thông tin này";
+                        return View();
+                    }
+
+                    if (category.CategoryName == null)
+                    {
+                        ViewBag.CategoryName = "phải nhập thông tin này";
+                        return View();
+                    }
+                    if (category.BrandId == null)
+                    {
+                        ViewBag.BrandId = "phải nhập thông tin này";
+                        return View();
+                    }
+
+                    if (category.BrandName == null)
+                    {
+                        ViewBag.BrandName = "phải nhập thông tin này";
+                        return View();
+                    }
+
                     string filePicDM;
                     if (PicDanhMucUpload == null)
                     {

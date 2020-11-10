@@ -26,7 +26,7 @@
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <img src="~/img/logo.png" height="50px" width="50px" />
+                <img src="~/img/logo.png" height="50px" width="50px" onclick="location.href='@Url.Action("Index", "AdHome")'" />
                 <div class="header__pane ml-auto" style="padding-left:10px">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -177,21 +177,21 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Products</li>
                             <li>
-                                <a href="https://localhost:44344/AdHome/Index">
+                                <a href="@Url.Action("Index", "AdHome")">
                                     <i class="metismenu-icon pe-7s-diamond"></i>
                                     Product
                                 </a>
                             </li>
                             <li class="app-sidebar__heading">Categories</li>
                             <li>
-                                <a href="https://localhost:44344/AdHome/Category">
+                                <a href="@Url.Action("Category", "AdHome")">
                                     <i class="metismenu-icon pe-7s-eyedropper"></i>
                                     Category
                                 </a>
                             </li>
                             <li class="app-sidebar__heading">Customers</li>
                             <li>
-                                <a href="https://localhost:44344/ApplicationUsers/Index">
+                                <a href="@Url.Action("Index", "ApplicationUsers")">
                                     <i class="metismenu-icon pe-7s-user"></i>
                                     Customer
                                 </a>
@@ -205,14 +205,14 @@
                             </li>
                             <li class="app-sidebar__heading">Status</li>
                             <li>
-                                <a href="https://localhost:44344/Statt/Index">
+                                <a href="@Url.Action("Index", "Statt")">
                                     <i class="metismenu-icon pe-7s-news-paper"></i>
                                     Status
                                 </a>
                             </li>
                             <li class="app-sidebar__heading">Statistics</li>
                             <li>
-                                <a href="https://localhost:44344/AdHome/TopProductSales">
+                                <a href="@Url.Action("TopProductSales", "AdHome")">
                                     <i class="metismenu-icon pe-7s-graph2"></i>
                                     Top 10 Selling Products
                                 </a>

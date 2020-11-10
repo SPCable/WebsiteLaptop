@@ -52,7 +52,7 @@
 
 
                         <div class="col-md-4 mb-3">
-                            <img src="@Url.Content("~/img/"+Model.CategoryImg)" width="100px" height="90px" /> @TempData["imgCateEmpty"] @TempData["imgCate"]
+                            <img src="@Url.Content("~/img/brand_Img/"+Model.CategoryImg)" width="100px" height="90px" /> @TempData["imgCateEmpty"] @TempData["imgCate"]
                         </div>
                     </div>
 
@@ -86,7 +86,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-10 col-md-2">
                             <input type="submit" value="Lưu" class="btn btn-primary" />
-                            <a class="btn btn-danger pull-right" style="color:white" href="https://localhost:44344/AdHome/Category">Hủy</a>
+                            <a class="btn btn-danger pull-right" style="color:white" href="@Url.Action("Category","AdHome")">Hủy</a>
                         </div>
                         <div class="col-md-offset-5 col-md-2">
 

@@ -67,6 +67,7 @@ namespace WebVL.Controllers
                 var cargo = db.Orders.Where(m => m.IdBill == id).First();
                 db.Orders.Remove(cargo);
                 db.SaveChanges();
+                TempData["DeleteOrder"] = "Xóa Hóa Đơn thành công";
                 return RedirectToAction("Index");
             }
         }
@@ -85,6 +86,7 @@ namespace WebVL.Controllers
 
 
                 db.SaveChanges();
+                TempData["EditOrder"] = "Sửa Hóa Đơn thành công";
                 return RedirectToAction("Index");
                 
 

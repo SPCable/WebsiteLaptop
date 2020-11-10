@@ -69,6 +69,7 @@ namespace WebVL.Controllers
                 var statt = db.Statts.Where(m => m.Idpost == id).First();
                 db.Statts.Remove(statt);
                 db.SaveChanges();
+                TempData["DeleteStatt"] = "Xóa Bài Viết thành công";
                 return RedirectToAction("Index");
             }
         }
@@ -94,6 +95,7 @@ namespace WebVL.Controllers
                     statt.Details = detail;
                     UpdateModel(detail);
                     db.SaveChanges();
+                    TempData["EditStatt"] = "Sửa Bài Viết thành công";
                     return RedirectToAction("Index");
                 }
                 return this.Edit(id);

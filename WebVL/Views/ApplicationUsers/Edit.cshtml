@@ -75,7 +75,8 @@
                         </div>
                     </div>
 
-                    @*<div class="form-group">
+
+                    <div class="form-group">
                         @Html.LabelFor(model => model.PasswordHash, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-6 mb-3">
                             @Html.EditorFor(model => model.PasswordHash, new { htmlAttributes = new { @class = "form-control" } })
@@ -89,7 +90,7 @@
                             @Html.EditorFor(model => model.SecurityStamp, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.SecurityStamp, "", new { @class = "text-danger" })
                         </div>
-                    </div>*@
+                    </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -166,7 +167,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-10 col-md-2">
                             <input type="submit" value="Lưu" class="btn btn-primary" />
-                            <a class="btn btn-danger pull-right" style="color:white" href="https://localhost:44344/ApplicationUsers/Index">Hủy</a>
+                            <a class="btn btn-danger pull-right" style="color:white" href="@Url.Action("Index","ApplicationUsers")">Hủy</a>
                         </div>
                         <div class="col-md-offset-5 col-md-2">
 
