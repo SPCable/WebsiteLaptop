@@ -59,11 +59,11 @@ namespace WebVL
             //   appId: "343581486863420",
             //   appSecret: "a2767be9418c99a7a00a50f719d0ecd2");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "827484031912-n7pjg86n0oomocia6r5dvhodiipe3bqv.apps.googleusercontent.com",
+                ClientSecret = "ANCyVVrtcg5LwH7o0nevXHE1"
+            });
         }
     }
 }
