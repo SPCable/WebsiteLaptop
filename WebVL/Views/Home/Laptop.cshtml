@@ -1,12 +1,14 @@
-﻿@model IEnumerable<WebVL.Models.Product>
-
+﻿@using WebVL.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebVL.Models.Product>
 @{
-    ViewBag.Title = ViewBag.Tieude;
+    ViewBag.Title = "Laptop";
     Layout = "~/Views/Shared/_LayoutShop.cshtml";
 }
 
 <body>
-    <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-	0">
+    <div class="col-lg-9  order-1    order-lg-2 mb-5 mb-lg-0">
+        <h3>@TempData["Timkiem"]</h3>
         <div class="row">
             @foreach (var item in Model)
             {
@@ -22,7 +24,7 @@
                                 <img src="~/img/product/@item.productImg" alt="@item.productImg" width="200" height="200">
                             </a>
                             <div class="pi-links">
-                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                                <a href="@Url.Action("AddShoppingCart", "Shopping", new { @Idpro = item.ProductId, Url = Request.Url.ToString()})" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
                                 <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
                             </div>
                         </div>
@@ -35,5 +37,16 @@
                 </div>
             }
         </div>
+        <div class="pagination justify-content-center">
+            <div class="page-number" style="position:relative">
+                @Html.PagedListPager(Model, page => Url.Action("Laptop", new { page = page }))
+            </div>
+            <style>
+                .page-number li {
+                    display: inline;
+                }
+            </style>
+        </div>
+
     </div>
 </body>

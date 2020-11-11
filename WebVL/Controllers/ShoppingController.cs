@@ -1,9 +1,11 @@
 ﻿    using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using MomoGateWay.Model;
 using MultiShop.Models;
 using Newtonsoft.Json.Linq;
@@ -55,7 +57,7 @@ namespace WebVL.Controllers
             List<ShoppingCart> shoppingCarts = ShoppingCarts();
             if (shoppingCarts.Count == 0)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Laptop", "Home");
             }
             ViewBag.Amout = Amout();
             ViewBag.Total = Total();
@@ -94,12 +96,10 @@ namespace WebVL.Controllers
             }
             if (Session["ShoppingCart"] == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Laptop", "Home");
             }
 
              
-             
-
             List<ShoppingCart> shoppingCarts = ShoppingCarts();
             ViewBag.Total = Total();
             ViewBag.Amout = Amout();
@@ -107,7 +107,7 @@ namespace WebVL.Controllers
         }
 
 
-        public ActionResult Payment()
+        public ActionResult Payment(string Id, string Name, string Address)
         {
 
             if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
@@ -116,7 +116,7 @@ namespace WebVL.Controllers
             }
             if (Session["ShoppingCart"] == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Laptop", "Home");
             }
 
             List<ShoppingCart> shoppingCarts = ShoppingCarts();
@@ -125,12 +125,18 @@ namespace WebVL.Controllers
 
             Order order = new Order();
             var kh = (ApplicationUser)Session["Taikhoan"];
-            order.IdCus = kh.Id;
-            order.NameCus = kh.Name;
+            if(Name.IsNullOrWhiteSpace() || Address.IsNullOrWhiteSpace())
+            {
+                TempData["Thongbao"] = "Vui lòng nhập đầy đủ thông tin";
+                return RedirectToAction("Checkout","Shopping");
+            }
+            order.IdCus =  kh.Id;
+            order.NameCus = Name;
             order.Price = Total().ToString();
             order.DayBooks = DateTime.Now.ToString();
+            order.Count = Amout().ToString();
             order.Status = 2;
-            order.Address = kh.Address;
+            order.Address = Address;
             db.Orders.Add(order);
             db.SaveChanges();
 
@@ -177,7 +183,7 @@ namespace WebVL.Controllers
                 }
                 if (shoppingCarts.Count == 0)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Laptop", "Home");
                 }
                 return RedirectToAction("ShoppingCart");
             }

@@ -68,8 +68,9 @@
                         </div>
                         @using (Html.BeginForm("Result", "Home", FormMethod.Get))
                         {
-                            <input class="flaticon-search" value="Tìm kiếm" style="margin-top:22px; color:black" type="button" onclick="location.href='@Url.Action("Result","Home")'"> </input>
-                        }
+                            <br />
+                            <a class="btn btn-success"  onclick="location.href='@Url.Action("Result","Home")'"> <i class="fa fa-search"></i> Tìm kiếm </a>
+                        }   
                     </div>
                 </div>
             </div>
@@ -82,16 +83,9 @@
                 <li><a href="@Url.Action("Trangchu","Home")">Trang chủ</a></li>
                 <!-- <span class="new">New</span> -->
                 <li>
-                    <a href="@Url.Action("Index","Home")">Laptop</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">MSI</a></li>
-                        <li><a href="#">ASUS</a></li>
-                        <li><a href="#">ACER</a></li>
-                        <li><a href="#">DELL</a></li>
-                        <li><a href="#">MACBOOK</a></li>
-                    </ul>
+                    <a href="@Url.Action("Laptop","Home")">Laptop</a>
+
                 </li>
-                <li><a href="#">Đăng bài</a></li>
                 <li><a href="@Url.Action("Contact","Home")">Liên hệ</a></li>
             </ul>
         </div>
