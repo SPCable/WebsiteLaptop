@@ -7,7 +7,17 @@
 
 <head>
 
-    <!-- CSS here -->   
+    <!-- CSS here -->
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/flaticon.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/slicknav.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/animate.min.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/slick.css">
+    <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/nice-select.css">
     <link rel="stylesheet" href="~/LayoutSourceLogin/assets/css/style.css">
 </head>
 
@@ -38,13 +48,13 @@
                             <form class="row contact_form" action="#" method="post" novalidate="novalidate">
                                 @Html.ValidationSummary(true, "Tài khoản không hợp lệ", new { @class = "text-danger" })
                                 <div class="col-md-12 form-group p_star">
-                                    @Html.LabelFor(m => m.UserName, "Tài khoản Email", new { @class = "col-md-10 control-label" })
-                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-
+                                    @Html.LabelFor(m => m.Email,"Tài khoản Email", new { @class = "col-md-10 control-label" })
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    
                                 </div>
 
                                 <div class="col-md-12 form-group">
-                                    @Html.LabelFor(m => m.Password, "Mật khẩu", new { @class = "col-md-10 control-label" })
+                                    @Html.LabelFor(m => m.Password,"Mật khẩu", new { @class = "col-md-10 control-label" })
                                     @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                                 </div>
                                 <div class="col-md-12 form-group">
@@ -65,15 +75,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <section id="socialLoginForm">
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                </section>
-            </div>
         </div>
     </div>
 </section>
-
 
 
 

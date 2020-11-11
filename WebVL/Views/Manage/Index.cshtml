@@ -2,20 +2,24 @@
 @{
     ViewBag.Title = "Thông tin cá nhân";
 }           
-    <div class="container">
-        <h2>@ViewBag.Title</h2>
-        <hr />  
-        <dl class="dl-horizontal">
-            <dd>
-                @Html.ActionLink("Cập nhật thông tin", "Edit", new { id = ViewBag.Id })
-            </dd>
 
-            <dd>
-                @Html.ActionLink("Thay đổi mật khẩu", "ChangePassword", new { id = ViewBag.Id })
-            </dd>
+<h2>@ViewBag.Title.</h2>
 
-            <dd>
-                @Html.ActionLink("Lịch sử mua hàng", "History", new { id = ViewBag.Id })
-            </dd>
-        </dl>
-    </div>
+<p class="text-success">@ViewBag.StatusMessage</p>
+<p>@ViewBag.Id</p>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.ActionLink("Cập nhật thông tin", "Edit", new { id = ViewBag.Id })
+        </dd>
+
+        <dd>
+            @Html.ActionLink("Thay đổi mật khẩu", "ChangePassword", new { id = ViewBag.Id })
+        </dd>
+
+        <dd>
+            @Html.ActionLink("Lịch sử mua hàng", "History", new { id = ViewBag.Id })
+        </dd>
+    </dl>
+</div>

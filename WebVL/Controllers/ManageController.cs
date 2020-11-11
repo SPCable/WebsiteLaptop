@@ -276,7 +276,7 @@ namespace WebVL.Controllers
             if (ModelState.IsValid)
             {
                 LoginViewModel model = new LoginViewModel();
-                var kh = db.Users.SingleOrDefault(n => n.UserName == model.UserName);
+                var kh = db.Users.SingleOrDefault(n => n.Email == model.Email);
                 Session["Taikhoan"] = null;
                 Session["Taikhoan"] = kh;
                 db.Entry(applicationUser).State = EntityState.Modified;

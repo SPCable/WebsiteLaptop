@@ -77,8 +77,8 @@ namespace WebVL.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
-            var kh = db.Users.SingleOrDefault(n => n.UserName == model.UserName);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var kh = db.Users.SingleOrDefault(n => n.Email == model.Email);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -165,7 +165,7 @@ namespace WebVL.Controllers
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                  
-                    return RedirectToAction("Trangchu", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
@@ -335,8 +335,6 @@ namespace WebVL.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    var kh = db.Users.SingleOrDefault(n => n.Email == loginInfo.Email);
-                    Session["Taikhoan"] = kh;
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -347,7 +345,7 @@ namespace WebVL.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = loginInfo.DefaultUserName , Email = loginInfo.Email});
+                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
 
@@ -360,9 +358,7 @@ namespace WebVL.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var kh = db.Users.SingleOrDefault(n => n.UserName == model.UserName);
-                Session["Taikhoan"] = kh;   
-                return RedirectToAction("Trangchu", "Manage");
+                return RedirectToAction("Index", "Manage");
             }
 
             if (ModelState.IsValid)
@@ -373,15 +369,13 @@ namespace WebVL.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
-                        var kh = db.Users.SingleOrDefault(n => n.Email == model.Email);
-                        Session["Taikhoan"] = kh;
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
@@ -400,7 +394,7 @@ namespace WebVL.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Trangchu", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -457,7 +451,7 @@ namespace WebVL.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Trangchu", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

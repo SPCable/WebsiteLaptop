@@ -1,12 +1,37 @@
-﻿@model IEnumerable<WebVL.Models.Product>
+﻿@using WebVL.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebVL.Models.Product>
+
+@*@model IEnumerable<WebVL.Models.Product>*@
 
 @{
-    ViewBag.Title = ViewBag.Tieude;
+    ViewBag.Title = "Laptop";
     Layout = "~/Views/Shared/_LayoutShop.cshtml";
 }
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Admin VinLaptop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <script src="~/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+
+
+
+
+    <link href="~/Admin/main.css" rel="stylesheet">
+
+</head>
+
+
 <body>
-    <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-	0">
+    <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
         <div class="row">
             @foreach (var item in Model)
             {
@@ -35,5 +60,13 @@
                 </div>
             }
         </div>
+        <div class="page-number" style="position:relative">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+        </div>
+        <style>
+            .page-number li {
+                display: inline;
+            }
+        </style>
     </div>
 </body>

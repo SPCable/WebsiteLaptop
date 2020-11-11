@@ -60,9 +60,7 @@
                         </div>
                         @using (Html.BeginForm("Result", "Home", FormMethod.Get))
                         {
-                            <br />
-                            <a class="btn btn-success" onclick="location.href='@Url.Action("Result","Home")'"> <i class="fa fa-search"></i> Tìm kiếm </a>
-
+                            <input class="flaticon-search" value="Tìm kiếm" style="margin-top:22px; color:black" type="button" onclick="location.href='@Url.Action("Result","Home")'"> </input>
                         }
                     </div>
             </div>
@@ -71,13 +69,21 @@
      </div>
     <nav class="main-navbar">
         <div class="container">
+            <!-- menu -->
             <ul class="main-menu">
                 <li><a href="@Url.Action("Trangchu","Home")">Trang chủ</a></li>
                 <li>
-                    <a href="@Url.Action("Laptop","Home")">Laptop</a>
-
+                    <a href="@Url.Action("Index","Home")">Laptop</a>
+                    <ul class="sub-menu">
+                        <li><a href="#">MSI</a></li>
+                        <li><a href="#">ASUS</a></li>
+                        <li><a href="#">ACER</a></li>
+                        <li><a href="#">DELL</a></li>
+                        <li><a href="#">MACBOOK</a></li>
+                    </ul>
                 </li>
-               <li><a href="@Url.Action("Contact","Home")">Liên hệ</a></li>
+                <li><a href="#">Đăng bài</a></li>
+                <li><a href="@Url.Action("Contact","Home")">Liên hệ</a></li>
             </ul>
         </div>
     </nav>
@@ -86,13 +92,12 @@
 <div class="page-top-info">
     <div class="container">
         <ul class="main-menu" style="float:right">
-            <li><a href="#"><img style="height:35px;" src="https://cdn.tgdd.vn/Brand/1/MSI44-b_17.png" alt="Alternate Text" /></a></li>
-            <li><a href="#"><img style="height:35px;" src="https://cdn.tgdd.vn/Brand/1/Asus44-b_20.jpg" alt="Alternate Text" /></a></li>
-            <li><a href="#"><img style="height:35px;" src="https://cdn.tgdd.vn/Brand/1/Acer44-b_37.jpg" alt="Alternate Text" /></a></li>
-            <li><a href="#"><img style="height:35px;" src="https://cdn.tgdd.vn/Brand/1/Dell44-b_2.jpg" alt="Alternate Text" /></a></li>
-            <li><a href="#"><img style="height:35px;" src="https://cdn.tgdd.vn/Brand/1/Macbook44-b_41.png" alt="Alternate Text" /></a></li>
-            <li><a href="#"><img style="height:35px;" src="https://cdn.tgdd.vn/Brand/1/LG44-b_32.jpg" alt="Alternate Text" /></a></li>
-</ul>
+            <li><a href="#"><img src="https://cdn.tgdd.vn/Brand/1/MSI44-b_17.png" alt="Alternate Text" /></a></li>
+            <li><a href="#"><img src="https://cdn.tgdd.vn/Brand/1/Asus44-b_20.jpg" alt="Alternate Text" /></a></li>
+            <li><a href="#"><img src="https://cdn.tgdd.vn/Brand/1/Acer44-b_37.jpg" alt="Alternate Text" /></a></li>
+            <li><a href="#"><img src="https://cdn.tgdd.vn/Brand/1/Dell44-b_2.jpg" alt="Alternate Text" /></a></li>
+            <li><a href="#"><img src="https://cdn.tgdd.vn/Brand/1/Macbook44-b_41.png" alt="Alternate Text" /></a></li>
+        </ul>
         <h4>@ViewBag.Title</h4>
         <div class="site-pagination">
             <a href="">Home</a> /
@@ -100,7 +105,30 @@
 
         </div>
         <div class="site-pagination">
-
+            <div>
+                <ul class="main-menu" style="float:right ; padding:8px;">
+                    <li>
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                        <label for="vehicle1"> Dưới 10 triệu </label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                        <label for="vehicle1"> 10 - 15 triệu </label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                        <label for="vehicle1"> 15 - 20 triệu </label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                        <label for="vehicle1"> 20 - 25 triệu </label><br>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                        <label for="vehicle1"> Trên 25 triệu </label><br>
+                    </li>
+                </ul>
+            </div>
 
 
         </div>

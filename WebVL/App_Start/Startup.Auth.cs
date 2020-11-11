@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using WebVL.Context;
 using WebVL.Models;
@@ -54,9 +55,9 @@ namespace WebVL
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-               appId: "836357777126817",
-               appSecret: "5745f13bca5f7cac00528f80793c92b8");
+            //app.UseFacebookAuthentication(
+            //   appId: "343581486863420",
+            //   appSecret: "a2767be9418c99a7a00a50f719d0ecd2");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
