@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -58,6 +58,11 @@ namespace WebVL
                appId: "836357777126817",
                appSecret: "5745f13bca5f7cac00528f80793c92b8");
 
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "827484031912-n7pjg86n0oomocia6r5dvhodiipe3bqv.apps.googleusercontent.com",
+                ClientSecret = "ANCyVVrtcg5LwH7o0nevXHE1"
+            });
         }
     }
 }
