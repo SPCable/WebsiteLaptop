@@ -60,7 +60,9 @@
                         </div>
                         @using (Html.BeginForm("Result", "Home", FormMethod.Get))
                         {
-                            <input class="btn btn-success" value="Tìm kiếm" style="margin-top:22px; color:black" type="button" onclick="location.href='@Url.Action("Result","Home")'"></input>
+                            <br />
+                            <a class="btn btn-success" onclick="location.href='@Url.Action("Result","Home")'"> <i class="fa fa-search"></i> Tìm kiếm </a>
+
                         }
                     </div>
             </div>
@@ -69,7 +71,6 @@
      </div>
     <nav class="main-navbar">
         <div class="container">
-            <!-- menu -->
             <ul class="main-menu">
                 <li><a href="@Url.Action("Trangchu","Home")">Trang chủ</a></li>
                 <li>

@@ -43,27 +43,7 @@
                                 <input type="text" placeholder="Phone no. (*)" value="@kh.PhoneNumber" name="Phone" />
                             </div>
                         </div>
-                    <div class="cf-title">Phương thức giao hàng</div>
-                    <div class="row shipping-btns">
-                        <div class="col-6">
-                            <div class="cf-radio-btns">
-                                <div class="cfr-item">
-                                    <input type="radio" name="shipping" id="ship-1">
-                                    <label for="ship-1">Giao hàng tại nhà</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="cf-radio-btns">
-                                <div class="cfr-item">
-                                    <input type="radio" name="shipping" id="ship-2">
-                                    <label for="ship-2">Nhận hàng tại cửa hàng</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cf-title">Thanh toán</div>
+                    <div class="cf-title">Phương thức thanh toán</div>
                     <div class="row shipping-btns">
                         <ul class="payment-list">
 
@@ -77,14 +57,6 @@
                                     Momo <a href="@Url.Action("PayMomo", "Shopping")"><img style="height:80px" src="~/img/mm.png" /></a>
                                 </li>
                             }
-                            <li>
-                                <div class="cf-radio-btns">
-                                    <div class="cfr-item">
-                                        <input type="radio" name="payment" id="2">
-                                        <label for="2">Thanh toán khi nhận hàng</label>
-                                    </div>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                     <button class="site-btn submit-order-btn"> <a style="color:white" href="@Url.Action("Payment", "Shopping")">Xác nhận mua ngay </a>  </button>

@@ -68,8 +68,9 @@
                         </div>
                         @using (Html.BeginForm("Result", "Home", FormMethod.Get))
                         {
-                            <input class="btn btn-success"  value="Tìm kiếm" style="margin-top:22px; color:black" type="button" onclick="location.href='@Url.Action("Result","Home")'"/> 
-                        }
+                            <br />
+                            <a class="btn btn-success"  onclick="location.href='@Url.Action("Result","Home")'"> <i class="fa fa-search"></i> Tìm kiếm </a>
+                        }   
                     </div>
                 </div>
             </div>

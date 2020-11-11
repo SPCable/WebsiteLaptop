@@ -5,9 +5,9 @@
 @{
     ViewBag.Title = "Result";
     Layout = "~/Views/Shared/_Layout_s.cshtml";
-}}
-<link href="~/Admin/main.css" rel="stylesheet">
-<body>
+}
+
+<div class="container">
     <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-	0">
         <div class="row">
             @foreach (var item in Model)
@@ -39,7 +39,7 @@
 
         </div>
         <div class="page-number" style="position:relative">
-            @Html.PagedListPager(Model, page => Url.Action("Result", new { page = page }))
+            @Html.PagedListPager(Model, page => Url.Action("Laptop", new { page = page }))
         </div>
         <style>
             .page-number li {
@@ -47,4 +47,4 @@
             }
         </style>
     </div>
-</body>
+</div>

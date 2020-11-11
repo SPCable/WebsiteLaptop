@@ -5,7 +5,7 @@
     ViewBag.Title = "Laptop";
     Layout = "~/Views/Shared/_LayoutShop.cshtml";
 }
-<link href="~/Admin/main.css" rel="stylesheet">
+
 <body>
     <div class="col-lg-9  order-1    order-lg-2 mb-5 mb-lg-0">
         <h3>@TempData["Timkiem"]</h3>
@@ -37,13 +37,16 @@
                 </div>
             }
         </div>
-        <div class="page-number" style="position:relative">
-            @Html.PagedListPager(Model, page => Url.Action("Laptop", new { page = page }))
+        <div class="pagination justify-content-center">
+            <div class="page-number" style="position:relative">
+                @Html.PagedListPager(Model, page => Url.Action("Laptop", new { page = page }))
+            </div>
+            <style>
+                .page-number li {
+                    display: inline;
+                }
+            </style>
         </div>
-        <style>
-            .page-number li {
-                display: inline;
-            }
-        </style>
+
     </div>
 </body>
