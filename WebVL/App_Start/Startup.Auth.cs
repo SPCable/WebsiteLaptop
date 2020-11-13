@@ -2,8 +2,10 @@ using System;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
+using Microsoft.Owin.Security.Twitter;
 using Owin;
 using WebVL.Context;
 using WebVL.Models;
@@ -63,6 +65,21 @@ namespace WebVL
             {
                 ClientId = "827484031912-n7pjg86n0oomocia6r5dvhodiipe3bqv.apps.googleusercontent.com",
                 ClientSecret = "ANCyVVrtcg5LwH7o0nevXHE1"
+            });
+
+            app.UseTwitterAuthentication(new TwitterAuthenticationOptions
+            {
+                ConsumerKey = "2pmfL6gVBC1zWT5haHH5XUN5i",
+                ConsumerSecret = "wfSeZTJDABtRV4COEOcu1ao2Pal1hwcATokQ8kEywXkK9OXKZB",
+                BackchannelCertificateValidator = new CertificateSubjectKeyIdentifierValidator(new[]
+                {
+                    "A5EF0B11CEC04103A34A659048B21CE0572D7D47",
+                    "0D445C165344C1827E1D20AB25F40163D8BE79A5",
+                    "7FD365A7C2DDECBBF03009F34339FA02AF333133",
+                    "39A55D933676616E73A761DFA16A7E59CDE66FAD",
+                    "5168FF90AF0207753CCCD9656462A212B859723B",
+                    "B13EC36903F8BF4701D498261A0802EF63642BC3"
+                })
             });
         }
     }
